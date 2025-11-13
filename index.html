@@ -1,325 +1,167 @@
-:root {
-  --sidebar-bg: #f5f5f5;
-  --content-bg: #ffffff;
-  --border: #e0e0e0;
-  --text-main: #333333;
-  --text-muted: #777777;
-  --link: #007acc;
-  --shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-  --radius-card: 16px;
-  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sri Surya S. Vaddhiparthy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+        <!-- Avatar: click to upload, always circular -->
+        <div class="avatar" id="avatar">
+          <div class="avatar-circle">
+            <img id="avatar-img" alt="Profile photo">
+            <div class="avatar-placeholder">
+              +
+            </div>
+          </div>
+          <input type="file" id="avatar-input" accept="image/*">
+        </div>
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
+        <!-- Text info -->
+        <h1 class="name">Sri Surya S. Vaddhiparthy</h1>
+        <p class="headline">
+          Senior Data &amp; AI Engineer<br>
+          LLM Systems, RAG &amp; Recommender Architect
+        </p>
+        <p class="degree">
+          Master of Science (Data Science),<br>
+          Western Michigan University
+        </p>
 
-body {
-  font-family: var(--font-main);
-  color: var(--text-main);
-  background: #ffffff;
-}
+        <ul class="meta">
+          <li>
+            <span class="icon">📍</span>
+            Detroit Metropolitan Area / Kalamazoo, MI
+          </li>
+          <li>
+            <span class="icon">🏛️</span>
+            Comerica Bank (via Collaborate Solutions)
+          </li>
+          <li>
+            <span class="icon">✉️</span>
+            <a href="mailto:surya@surya.vaddhiparthy.com">
+              surya@surya.vaddhiparthy.com
+            </a>
+          </li>
+          <li>
+            <span class="icon">in</span>
+            <a href="https://www.linkedin.com/in/vaddhiparthy" target="_blank" rel="noopener">
+              linkedin.com/in/vaddhiparthy
+            </a>
+          </li>
+        </ul>
 
-/* Layout */
+        <ul class="sidebar-links">
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#research">Research</a></li>
+        </ul>
+      </div>
+    </aside>
 
-.layout {
-  display: flex;
-  min-height: 100vh;
-}
+    <!-- MAIN COLUMN -->
+    <div class="main-column">
+      <!-- TOP LINE WITH TITLE + HAMBURGER -->
+      <header class="topbar">
+        <div class="topbar-title">
+          <span class="topbar-name">Sri Surya S. Vaddhiparthy</span>
+          <span class="topbar-sub">Data &amp; AI Engineer</span>
+        </div>
 
-/* Sidebar */
+        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
 
-.sidebar {
-  width: 260px;
-  background: var(--sidebar-bg);
-  border-right: 1px solid var(--border);
-  display: flex;
-  justify-content: center;
-  padding: 2rem 1.5rem;
-}
+        <nav class="hamburger-menu" id="hamburger-menu">
+          <a href="#intro">Intro</a>
+          <a href="#research">Research</a>
+        </nav>
+      </header>
 
-.sidebar-inner {
-  max-width: 210px;
-}
+      <!-- CONTENT CARD -->
+      <main class="content">
+        <section id="intro" class="section">
+          <h2>Intro</h2>
+          <p>
+            I’m a Senior Data &amp; AI Engineer with 7+ years building production-grade
+            data platforms and AI systems. I design end-to-end pipelines that blend
+            AWS, Snowflake, Airflow, dbt, and Spark with LLM infrastructure
+            (LangGraph, LangChain, Milvus, rerankers) to make enterprise data directly
+            usable by AI.
+          </p>
+          <p>
+            My work spans multi-cloud ETL, vector search and RAG, observability,
+            and CI/CD automation—always with the goal of turning raw data into fast,
+            reliable, intelligent systems that scale.
+          </p>
+        </section>
 
-/* Avatar */
+        <section id="research" class="section">
+          <h2>Research & Focus Areas</h2>
+          <ul>
+            <li>LangGraph-based multi-agent systems for real-world workflows.</li>
+            <li>Hybrid retrieval (BM25 + dense vectors) and rerankers for RAG.</li>
+            <li>LLM observability, latency/cost optimization, and reliability.</li>
+            <li>Data platforms for AI workloads on AWS, Snowflake, BigQuery.</li>
+          </ul>
+        </section>
 
-.avatar {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  cursor: pointer;
-}
+        <footer class="footer">
+          © <span id="year"></span> Sri Surya S. Vaddhiparthy
+        </footer>
+      </main>
+    </div>
+  </div>
 
-.avatar-circle {
-  width: 180px;
-  height: 180px;
-  margin: 0 auto;
-  border-radius: 50%;
-  background: #dcdcdc;
-  overflow: hidden;
-  position: relative;
-}
+  <script>
+    // Avatar upload: always clipped to the circle
+    const avatar = document.getElementById('avatar');
+    const avatarInput = document.getElementById('avatar-input');
+    const avatarImg = document.getElementById('avatar-img');
+    const avatarPlaceholder = document.querySelector('.avatar-placeholder');
 
-.avatar-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: none;
-}
+    if (avatar && avatarInput && avatarImg) {
+      avatar.addEventListener('click', () => avatarInput.click());
 
-.avatar-circle img.show {
-  display: block;
-}
+      avatarInput.addEventListener('change', () => {
+        const file = avatarInput.files && avatarInput.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+          avatarImg.src = e.target.result;
+          avatarImg.classList.add('show');
+          avatarPlaceholder.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      });
+    }
 
-.avatar-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  color: #b0b0b0;
-}
+    // Hamburger menu
+    const hamBtn = document.querySelector('.hamburger');
+    const hamMenu = document.getElementById('hamburger-menu');
 
-.avatar input[type="file"] {
-  display: none;
-}
+    if (hamBtn && hamMenu) {
+      hamBtn.addEventListener('click', () => {
+        const open = hamMenu.classList.toggle('open');
+        hamBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
 
-/* Sidebar text */
+      hamMenu.querySelectorAll('a').forEach(a =>
+        a.addEventListener('click', () => {
+          hamMenu.classList.remove('open');
+          hamBtn.setAttribute('aria-expanded', 'false');
+        })
+      );
+    }
 
-.name {
-  margin: 1rem 0 0.3rem 0;
-  font-size: 1.4rem;
-  text-align: center;
-}
-
-.headline {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  text-align: center;
-}
-
-.degree {
-  margin: 0.6rem 0 1.1rem 0;
-  font-size: 0.85rem;
-  color: #666666;
-  text-align: center;
-}
-
-.meta {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1rem 0;
-  font-size: 0.9rem;
-}
-
-.meta li {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 0.4rem;
-}
-
-.icon {
-  width: 1.5rem;
-  flex-shrink: 0;
-}
-
-.sidebar-links {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0 0 0;
-  font-size: 0.9rem;
-}
-
-.sidebar-links li {
-  margin-bottom: 0.25rem;
-}
-
-.sidebar a {
-  color: var(--link);
-  text-decoration: none;
-}
-
-.sidebar a:hover {
-  text-decoration: underline;
-}
-
-/* Main column */
-
-.main-column {
-  flex: 1;
-  padding: 2rem 2.5rem;
-  background: #fafafa;
-}
-
-/* Topbar (no big white bar) */
-
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.25rem;
-}
-
-.topbar-title {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.topbar-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-.topbar-sub {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-/* Hamburger */
-
-.hamburger {
-  border: none;
-  background: var(--content-bg);
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  box-shadow: var(--shadow);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  cursor: pointer;
-}
-
-.hamburger span {
-  display: block;
-  width: 17px;
-  height: 2px;
-  background: #333333;
-  border-radius: 999px;
-  margin: 2px 0;
-}
-
-/* Hamburger dropdown */
-
-.hamburger-menu {
-  position: absolute;
-  right: 2.5rem;
-  top: 4.1rem;
-  background: var(--content-bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.4rem 0;
-  box-shadow: var(--shadow);
-  display: none;
-  min-width: 130px;
-  z-index: 10;
-}
-
-.hamburger-menu.open {
-  display: block;
-}
-
-.hamburger-menu a {
-  display: block;
-  padding: 0.35rem 0.9rem;
-  font-size: 0.9rem;
-  color: var(--text-main);
-  text-decoration: none;
-}
-
-.hamburger-menu a:hover {
-  background: #eef6ff;
-  color: var(--link);
-}
-
-/* Content card */
-
-.content {
-  background: var(--content-bg);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-  padding: 1.8rem 2.1rem 1.4rem 2.1rem;
-}
-
-.section {
-  margin-bottom: 1.6rem;
-}
-
-.section h2 {
-  margin-top: 0;
-  margin-bottom: 0.6rem;
-  font-size: 1.3rem;
-}
-
-.section p {
-  margin-top: 0;
-  line-height: 1.6;
-}
-
-.section ul {
-  margin-top: 0.4rem;
-  padding-left: 1.1rem;
-}
-
-.footer {
-  margin-top: 1.4rem;
-  padding-top: 0.8rem;
-  border-top: 1px solid #eeeeee;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-/* Links */
-
-a {
-  color: var(--link);
-}
-a:hover {
-  color: #005a99;
-}
-
-/* Responsive */
-
-@media (max-width: 880px) {
-  .layout {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    padding: 1.5rem 1.25rem;
-  }
-
-  .sidebar-inner {
-    max-width: none;
-    text-align: left;
-  }
-
-  .main-column {
-    padding: 1.5rem 1.25rem 2rem 1.25rem;
-  }
-
-  .avatar-circle {
-    width: 140px;
-    height: 140px;
-  }
-
-  .hamburger-menu {
-    right: 1.25rem;
-  }
-}
+    // Footer year
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
