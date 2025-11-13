@@ -214,21 +214,22 @@ a:hover {
   height: 34px;
   border-radius: 999px;
   box-shadow: var(--shadow);
-  display: inline-flex;
+  display: flex;                 /* key: stack spans inside */
+  flex-direction: column;        /* vertical */
   align-items: center;
   justify-content: center;
+  gap: 3px;                      /* explicit spacing between lines */
   padding: 0;
   cursor: pointer;
 }
 
 .hamburger span {
-  display: block;
-  width: 16px;
-  height: 1.8px;
+  width: 18px;
+  height: 2px;
   background: #111827;
   border-radius: 999px;
-  margin: 2.4px 0;   /* three clearly visible lines, still tight */
-  opacity: 0.9;
+  display: block;
+  margin: 0;                     /* no margin, we use gap on parent */
 }
 
 /* Hamburger dropdown */
