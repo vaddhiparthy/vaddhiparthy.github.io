@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Surya Vaddhiparthy</title>
+  <title>Sri Surya S. Vaddhiparthy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,21 +11,62 @@
     <!-- LEFT SIDEBAR -->
     <aside class="sidebar">
       <div class="sidebar-inner">
-        <div class="avatar">
-          <div class="avatar-circle"></div>
+        <!-- Avatar upload -->
+        <div class="avatar" id="avatar-click">
+          <img id="avatar-img" alt="Profile photo">
+          <div class="avatar-placeholder">Click to add photo</div>
+          <input type="file" id="avatar-input" accept="image/*">
         </div>
 
-        <h1 class="sidebar-title">Surya Vaddhiparthy</h1>
-        <p class="sidebar-subtitle">
-          Data & AI Engineer. LLMs, LangGraph, ML, and data platforms.
+        <!-- Editable name / title / degree -->
+        <h1 class="sidebar-title"
+            contenteditable="true"
+            data-profile-key="name">
+          Sri Surya S. Vaddhiparthy
+        </h1>
+
+        <p class="sidebar-subtitle"
+           contenteditable="true"
+           data-profile-key="headline">
+          Senior Data &amp; AI Engineer &mdash; LLM Systems, RAG &amp; Recommender Architect
+        </p>
+
+        <p class="sidebar-degree"
+           contenteditable="true"
+           data-profile-key="degree">
+          Master of Science (MS), Data Science &middot; Western Michigan University
         </p>
 
         <ul class="sidebar-meta">
-          <li><span class="meta-icon">📍</span> Kalamazoo, MI</li>
-          <li><span class="meta-icon">🏛️</span> Comerica Bank (Contract)</li>
+          <li>
+            <span class="meta-icon">📍</span>
+            <span contenteditable="true" data-profile-key="location">
+              Detroit Metropolitan Area / Kalamazoo, MI
+            </span>
+          </li>
+          <li>
+            <span class="meta-icon">🏛️</span>
+            <span contenteditable="true" data-profile-key="role">
+              Senior Data &amp; AI Engineer &middot; Comerica Bank (via Collaborate Solutions)
+            </span>
+          </li>
           <li>
             <span class="meta-icon">✉️</span>
-            <a href="mailto:surya@surya.vaddhiparthy.com">surya@surya.vaddhiparthy.com</a>
+            <a href="mailto:surya@surya.vaddhiparthy.com"
+               contenteditable="true"
+               data-profile-key="email">
+              surya@surya.vaddhiparthy.com
+            </a>
+          </li>
+          <li>
+            <span class="meta-icon">🔗</span>
+            <a href="https://www.linkedin.com/in/vaddhiparthy"
+               target="_blank"
+               rel="noopener"
+               contenteditable="true"
+               data-profile-key="linkedin">
+              linkedin.com/in/vaddhiparthy
+            </a>
           </li>
         </ul>
 
@@ -38,12 +79,21 @@
 
     <!-- RIGHT SIDE -->
     <div class="content-wrapper">
-      <!-- TOP BAR WITH HAMBURGER -->
+      <!-- TOP BAR WITH MINIMAL HAMBURGER -->
       <header class="topbar">
-        <div class="topbar-title">Surya Vaddhiparthy</div>
-        <button class="topbar-menu-btn" aria-label="Toggle navigation" aria-expanded="false">
-          &#9776;
+        <div class="topbar-title">
+          <span class="topbar-name">Sri Surya S. Vaddhiparthy</span>
+          <span class="topbar-role">Data &amp; AI Engineer</span>
+        </div>
+
+        <button class="topbar-menu-btn"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
+
         <nav class="topbar-menu" id="topbar-menu">
           <a href="#intro">Intro</a>
           <a href="#research">Research</a>
@@ -55,56 +105,143 @@
         <section class="section intro" id="intro">
           <h2>Intro</h2>
           <p>
-            I’m a Data & AI Engineer working with large language models, LangGraph,
-            data engineering, and production ML systems. This site is a simple home
-            for my work and interests.
+            I’m a Senior Data &amp; AI Engineer with 7+ years building production-grade
+            data platforms and LLM systems. I blend AWS, Snowflake, Airflow, dbt, and
+            Python with LangGraph, LangChain, vector search, and retrievers to turn
+            raw enterprise data into fast, reliable AI experiences.
+          </p>
+          <p>
+            My focus: robust data pipelines, observability, and agentic LLM workflows
+            that actually ship and scale.
           </p>
         </section>
 
         <section class="section" id="research">
-          <h2>Research</h2>
-          <p>
-            My current work and interests revolve around:
-          </p>
+          <h2>Research & Focus Areas</h2>
           <ul>
-            <li>Designing LangGraph-based multi-agent systems for real-world tasks.</li>
-            <li>RAG pipelines, vector search, and retrieval evaluation.</li>
-            <li>Data engineering for AI workloads on AWS and Snowflake.</li>
+            <li>LangGraph-based multi-agent systems for real enterprise workflows.</li>
+            <li>RAG, hybrid retrieval (BM25 + dense), rerankers, and evaluation.</li>
+            <li>Data engineering for AI workloads on AWS, Snowflake, and BigQuery.</li>
+            <li>LLM observability, cost/latency optimization, and reliability.</li>
           </ul>
+          <p class="inline-note">
+            This site will eventually host deeper writeups, architecture notes,
+            and experiment logs.
+          </p>
         </section>
 
         <footer class="footer">
-          <p>© <span id="year"></span> Surya Vaddhiparthy.</p>
+          <p>© <span id="year"></span> Sri Surya S. Vaddhiparthy.</p>
         </footer>
       </main>
     </div>
   </div>
 
   <script>
-    // Hamburger menu behaviour
-    const btn = document.querySelector('.topbar-menu-btn');
-    const menu = document.getElementById('topbar-menu');
+    // ----- Local profile storage helpers -----
+    const STORAGE_PREFIX = "surya_profile_";
 
-    if (btn && menu) {
-      btn.addEventListener('click', () => {
-        const open = menu.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    function loadProfileFields() {
+      const fields = document.querySelectorAll("[data-profile-key]");
+      fields.forEach(el => {
+        const key = el.getAttribute("data-profile-key");
+        const stored = window.localStorage.getItem(STORAGE_PREFIX + key);
+        if (stored) {
+          if (el.tagName.toLowerCase() === "a" && el.href.startsWith("mailto:")) {
+            el.textContent = stored;
+            el.href = "mailto:" + stored;
+          } else {
+            el.textContent = stored;
+          }
+        }
       });
 
-      // Close on link click (mobile)
-      menu.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          if (menu.classList.contains('open')) {
-            menu.classList.remove('open');
-            btn.setAttribute('aria-expanded', 'false');
+      // Avatar
+      const avatarImg = document.getElementById("avatar-img");
+      const avatarData = window.localStorage.getItem(STORAGE_PREFIX + "avatar");
+      if (avatarImg && avatarData) {
+        avatarImg.src = avatarData;
+        avatarImg.classList.add("has-image");
+        const placeholder = document.querySelector(".avatar-placeholder");
+        if (placeholder) placeholder.style.display = "none";
+      }
+    }
+
+    function attachProfileListeners() {
+      const fields = document.querySelectorAll("[data-profile-key]");
+      fields.forEach(el => {
+        el.addEventListener("blur", () => {
+          const key = el.getAttribute("data-profile-key");
+          let value = el.textContent.trim();
+          if (el.tagName.toLowerCase() === "a" && el.href.startsWith("mailto:")) {
+            value = el.textContent.trim();
+            el.href = "mailto:" + value;
+          }
+          window.localStorage.setItem(STORAGE_PREFIX + key, value);
+        });
+      });
+    }
+
+    function setupAvatarUpload() {
+      const avatarClick = document.getElementById("avatar-click");
+      const avatarInput = document.getElementById("avatar-input");
+      const avatarImg = document.getElementById("avatar-img");
+      const placeholder = document.querySelector(".avatar-placeholder");
+
+      if (!avatarClick || !avatarInput || !avatarImg) return;
+
+      avatarClick.addEventListener("click", () => {
+        avatarInput.click();
+      });
+
+      avatarInput.addEventListener("change", () => {
+        const file = avatarInput.files && avatarInput.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = e => {
+          const dataUrl = e.target.result;
+          avatarImg.src = dataUrl;
+          avatarImg.classList.add("has-image");
+          if (placeholder) placeholder.style.display = "none";
+          window.localStorage.setItem(STORAGE_PREFIX + "avatar", dataUrl);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function setupHamburger() {
+      const btn = document.querySelector(".topbar-menu-btn");
+      const menu = document.getElementById("topbar-menu");
+      if (!btn || !menu) return;
+
+      btn.addEventListener("click", () => {
+        const open = menu.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      menu.querySelectorAll("a").forEach(a => {
+        a.addEventListener("click", () => {
+          if (menu.classList.contains("open")) {
+            menu.classList.remove("open");
+            btn.setAttribute("aria-expanded", "false");
           }
         });
       });
     }
 
-    // Year in footer
-    const y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
+    function setYear() {
+      const y = document.getElementById("year");
+      if (y) y.textContent = new Date().getFullYear();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadProfileFields();
+      attachProfileListeners();
+      setupAvatarUpload();
+      setupHamburger();
+      setYear();
+    });
   </script>
 </body>
 </html>
