@@ -1,0 +1,178 @@
+:root {
+  --bg: #f5f7fb;
+  --bg-content: #ffffff;
+  --border: #dde1ea;
+  --text-main: #1f2933;
+  --text-muted: #6b7280;
+  --accent: #2b6cb0;
+  --sidebar-width: 270px;
+  --shadow-soft: 0 8px 20px rgba(15, 23, 42, 0.08);
+  --radius-lg: 16px;
+  --radius-xl: 999px;
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg);
+  color: var(--text-main);
+}
+
+/* Layout */
+
+.page-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+
+.sidebar {
+  width: var(--sidebar-width);
+  background: #f2f4f8;
+  border-right: 1px solid var(--border);
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-inner {
+  max-width: 220px;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.avatar-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+}
+
+.sidebar-title {
+  font-size: 1.4rem;
+  margin: 0;
+  text-align: center;
+}
+
+.sidebar-subtitle {
+  margin: 0.5rem 0 1rem 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.sidebar-meta,
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
+  font-size: 0.92rem;
+}
+
+.sidebar-meta li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.meta-icon {
+  width: 1.6rem;
+}
+
+.sidebar-links li {
+  margin-bottom: 0.35rem;
+}
+
+.sidebar a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+/* Right-side content */
+
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.75rem;
+}
+
+/* Top bar */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.topbar-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.topbar-menu-btn {
+  border: none;
+  background: #ffffff;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hamburger dropdown */
+
+.topbar-menu {
+  position: absolute;
+  right: 1.75rem;
+  top: 3.6rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.5rem 0;
+  box-shadow: var(--shadow-soft);
+  display: none;
+  min-width: 140px;
+  z-index: 20;
+}
+
+.topbar-menu.open {
+  display: block;
+}
+
+.topbar-menu a {
+  display: block;
+  padding: 0.4rem 1rem;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.topbar-menu a:hover {
+  backgr
