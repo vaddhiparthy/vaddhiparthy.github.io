@@ -205,13 +205,13 @@ a:hover {
   color: var(--text-muted);
 }
 
-/* Minimal hamburger */
+/* Minimal hamburger (tighter, cleaner) */
 
 .hamburger {
   border: none;
   background: var(--content-bg);
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 999px;
   box-shadow: var(--shadow);
   display: inline-flex;
@@ -223,11 +223,12 @@ a:hover {
 
 .hamburger span {
   display: block;
-  width: 17px;
-  height: 2px;
+  width: 16px;
+  height: 1.6px;
   background: #111827;
   border-radius: 999px;
-  margin: 2px 0;
+  margin: 1.5px 0; /* closer spacing */
+  opacity: 0.9;
 }
 
 /* Hamburger dropdown */
