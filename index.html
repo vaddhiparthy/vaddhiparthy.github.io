@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Surya Vaddhiparthy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <div class="avatar">
+          <div class="avatar-circle"></div>
+        </div>
+
+        <h1 class="sidebar-title">Surya Vaddhiparthy</h1>
+        <p class="sidebar-subtitle">
+          Data & AI Engineer. LLMs, LangGraph, ML, and data platforms.
+        </p>
+
+        <ul class="sidebar-meta">
+          <li><span class="meta-icon">📍</span> Kalamazoo, MI</li>
+          <li><span class="meta-icon">🏛️</span> Comerica Bank (Contract)</li>
+          <li>
+            <span class="meta-icon">✉️</span>
+            <a href="mailto:surya@surya.vaddhiparthy.com">surya@surya.vaddhiparthy.com</a>
+          </li>
+        </ul>
+
+        <ul class="sidebar-links">
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#research">Research</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- RIGHT SIDE -->
+    <div class="content-wrapper">
+      <!-- TOP BAR WITH HAMBURGER -->
+      <header class="topbar">
+        <div class="topbar-title">Surya Vaddhiparthy</div>
+        <button class="topbar-menu-btn" aria-label="Toggle navigation" aria-expanded="false">
+          &#9776;
+        </button>
+        <nav class="topbar-menu" id="topbar-menu">
+          <a href="#intro">Intro</a>
+          <a href="#research">Research</a>
+        </nav>
+      </header>
+
+      <!-- MAIN CONTENT -->
+      <main class="main">
+        <section class="section intro" id="intro">
+          <h2>Intro</h2>
+          <p>
+            I’m a Data & AI Engineer working with large language models, LangGraph,
+            data engineering, and production ML systems. This site is a simple home
+            for my work and interests.
+          </p>
+        </section>
+
+        <section class="section" id="research">
+          <h2>Research</h2>
+          <p>
+            My current work and interests revolve around:
+          </p>
+          <ul>
+            <li>Designing LangGraph-based multi-agent systems for real-world tasks.</li>
+            <li>RAG pipelines, vector search, and retrieval evaluation.</li>
+            <li>Data engineering for AI workloads on AWS and Snowflake.</li>
+          </ul>
+        </section>
+
+        <footer class="footer">
+          <p>© <span id="year"></span> Surya Vaddhiparthy.</p>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Hamburger menu behaviour
+    const btn = document.querySelector('.topbar-menu-btn');
+    const menu = document.getElementById('topbar-menu');
+
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      // Close on link click (mobile)
+      menu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          if (menu.classList.contains('open')) {
+            menu.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+
+    // Year in footer
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
