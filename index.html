@@ -410,8 +410,9 @@
 
   <script>
   (function () {
-    const API_BASE = "https://pepper-portfolio.onrender.com/"; // <--- put your Render URL here
-    const CHAT_ENDPOINT = "/api/chat";                  // adjust if your backend path is different
+    const API_BASE = "https://pepper-portfolio.onrender.com";  // no trailing slash
+    const CHAT_ENDPOINT = "/api/chat";
+               // adjust if your backend path is different
 
     function initPepperChat(mountId) {
       const root = document.getElementById(mountId);
@@ -494,9 +495,9 @@
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              message: text,
-              session_id: sessionId
+              message: text
             })
+
           });
 
           if (!resp.ok) {
