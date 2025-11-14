@@ -18,7 +18,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -205,6 +206,35 @@ a:hover {
   color: var(--text-muted);
 }
 
+/* Pepper launcher "search bar" */
+
+.pepper-launcher {
+  flex: 1;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  margin: 0 1.25rem;
+}
+
+.pepper-launcher-label {
+  width: 100%;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #f9fafb;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pepper-launcher-label::before {
+  content: "💬 ";
+  margin-right: 0.25rem;
+}
+
 /* Minimal hamburger (tighter, cleaner) */
 
 .hamburger {
@@ -358,9 +388,24 @@ a:hover {
   .hamburger-menu {
     right: 1.25rem;
   }
+
+  .pepper-launcher {
+    max-width: 100%;
+    margin: 0 0.75rem;
+  }
 }
 
 /* ===== Chat assistant widget ===== */
+
+/* Mount container hidden by default; opened via top launcher */
+#chatbot-root {
+  display: none;
+  margin-top: 1rem;
+}
+
+#chatbot-root.chat-open {
+  display: block;
+}
 
 .chat-card {
   margin-top: 1rem;
@@ -523,8 +568,16 @@ a:hover {
 }
 
 @keyframes orb-pulse {
-  0%   { transform: scale(1);   box-shadow: 0 0 6px rgba(37,99,235,0.5); }
-  50%  { transform: scale(1.12); box-shadow: 0 0 10px rgba(37,99,235,0.9); }
-  100% { transform: scale(1);   box-shadow: 0 0 6px rgba(37,99,235,0.5); }
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(37, 99, 235, 0.5);
+  }
+  50% {
+    transform: scale(1.12);
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.9);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(37, 99, 235, 0.5);
+  }
 }
-
