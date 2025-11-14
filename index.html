@@ -420,5 +420,142 @@
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
   </script>
+
+  <script>
+  (function () {
+    const API_BASE = "https://pepper-portfolio.onrender.com/"; // <--- put your Render URL here
+    const CHAT_ENDPOINT = "/api/chat";                  // adjust if your backend path is different
+
+    function initPepperChat(mountId) {
+      const root = document.getElementById(mountId);
+      if (!root) return;
+
+      root.innerHTML = `
+        <div class="chat-card">
+          <div class="chat-header">
+            <div class="chat-orb state-idle" id="pepper-orb"></div>
+            <div>
+              <div class="chat-title-main">Pepper · AI Assistant</div>
+              <div class="chat-title-sub">Answers about Surya's work</div>
+            </div>
+          </div>
+          <div class="chat-messages" id="pepper-messages"></div>
+          <form class="chat-input-row" id="pepper-form">
+            <textarea
+              id="pepper-input"
+              rows="1"
+              placeholder="Ask about projects, tech stack, or how I work…"></textarea>
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      `;
+
+      const messagesEl = root.querySelector("#pepper-messages");
+      const formEl     = root.querySelector("#pepper-form");
+      const inputEl    = root.querySelector("#pepper-input");
+      const orbEl      = root.querySelector("#pepper-orb");
+
+      let sending = false;
+      const sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
+
+      function scrollToBottom() {
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+
+      function setOrbState(state) {
+        orbEl.classList.remove("state-idle", "state-typing", "state-error");
+        orbEl.classList.add(state);
+      }
+
+      function addMessage(role, text, metaText) {
+        const row = document.createElement("div");
+        row.className = `message-row ${role}`;
+
+        const bubble = document.createElement("div");
+        bubble.className = `message-bubble ${role}`;
+        bubble.textContent = text;
+
+        if (metaText) {
+          const meta = document.createElement("div");
+          meta.className = "message-meta";
+          meta.textContent = metaText;
+          bubble.appendChild(meta);
+        }
+
+        row.appendChild(bubble);
+        messagesEl.appendChild(row);
+        scrollToBottom();
+        return bubble;
+      }
+
+      async function sendMessage(text) {
+        if (!text.trim() || sending) return;
+        sending = true;
+
+        // User bubble with single tick initially
+        const userBubble = addMessage("user", text, "✓ sent");
+        const metaEl = userBubble.querySelector(".message-meta");
+
+        inputEl.value = "";
+        inputEl.focus();
+        setOrbState("state-typing");
+
+        try {
+          metaEl.textContent = "✓✓ delivered";
+
+          const resp = await fetch(API_BASE + CHAT_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              message: text,
+              session_id: sessionId
+            })
+          });
+
+          if (!resp.ok) {
+            throw new Error("HTTP " + resp.status);
+          }
+
+          const data = await resp.json();
+          const reply = data.reply || data.message || "I had trouble forming a reply, but the backend responded.";
+
+          addMessage("assistant", reply);
+        } catch (err) {
+          console.error(err);
+          metaEl.textContent = "✓✓ (error)";
+          setOrbState("state-error");
+          addMessage("assistant", "Sorry, something went wrong talking to my backend.");
+        } finally {
+          sending = false;
+          setOrbState("state-idle");
+        }
+      }
+
+      formEl.addEventListener("submit", function (e) {
+        e.preventDefault();
+        sendMessage(inputEl.value);
+      });
+
+      // Enter to send, Shift+Enter for newline
+      inputEl.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          formEl.dispatchEvent(new Event("submit"));
+        }
+      });
+
+      // Optional: initial system message
+      addMessage(
+        "assistant",
+        "Hi, I’m Pepper. Ask me about Surya’s projects, tech stack, or how he approaches problems."
+      );
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      initPepperChat("chatbot-root");
+    });
+  })();
+</script>
+
 </body>
 </html>
