@@ -548,25 +548,27 @@
       );
     }
 
-    541:     document.addEventListener("DOMContentLoaded", function () {
-542:       initPepperChat("chatbot-root");
-543: 
-544:       var launcher = document.getElementById("pepper-launcher");
-545:       var chatRoot = document.getElementById("chatbot-root");
-546: 
-547:       if (launcher && chatRoot) {
-548:         launcher.addEventListener("click", function () {
-549:           chatRoot.classList.toggle("chat-open");
-550: 
-551:           if (chatRoot.classList.contains("chat-open")) {
-552:             var inputEl = chatRoot.querySelector("#pepper-input");
-553:             if (inputEl) inputEl.focus();
-554:           }
-555:         });
-556:       }
-557:     });
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Initialize Pepper chat where it already mounts
+    initPepperChat("chatbot-root");
 
-  })();
+    // Top-bar launcher → toggle chat open/closed
+    var launcher = document.getElementById("pepper-launcher");
+    var chatRoot = document.getElementById("chatbot-root");
+
+    if (launcher && chatRoot) {
+      launcher.addEventListener("click", function () {
+        chatRoot.classList.toggle("chat-open");
+
+        // Focus the input when opened
+        if (chatRoot.classList.contains("chat-open")) {
+          var inputEl = chatRoot.querySelector("#pepper-input");
+          if (inputEl) inputEl.focus();
+        }
+      });
+    }
+  });
 </script>
 
 </body>
