@@ -206,93 +206,7 @@ a:hover {
   color: var(--text-muted);
 }
 
-/* Pepper launcher "search bar" */
-
-.pepper-launcher {
-  flex: 1;
-  max-width: 420px;
-  display: flex;
-  align-items: center;
-  margin: 0 1.25rem;
-}
-
-.pepper-launcher-label {
-  width: 100%;
-  padding: 0.45rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: #f9fafb;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  cursor: pointer;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.pepper-launcher-label::before {
-  content: "💬 ";
-  margin-right: 0.25rem;
-}
-/* ===== Pepper full-screen overlay ===== */
-
-.pepper-overlay {
-  position: fixed;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-}
-
-.pepper-overlay.open {
-  display: flex;
-}
-
-.pepper-overlay-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.45);
-}
-
-.pepper-overlay-panel {
-  position: relative;
-  z-index: 1;
-  width: min(100%, 960px);
-  height: min(100%, 640px);
-  max-width: 100%;
-  max-height: 100%;
-  margin: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Close button */
-.pepper-close {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.75rem;
-  z-index: 2;
-  border: none;
-  background: rgba(15, 23, 42, 0.7);
-  color: #ffffff;
-  width: 28px;
-  height: 28px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  line-height: 1;
-}
-
-/* Make chat card fill the overlay panel */
-.pepper-overlay-panel .chat-card {
-  margin-top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-
-/* Minimal hamburger (tighter, cleaner) */
+/* Minimal hamburger */
 
 .hamburger {
   border: none;
@@ -301,11 +215,11 @@ a:hover {
   height: 34px;
   border-radius: 999px;
   box-shadow: var(--shadow);
-  display: flex;                 /* key: stack spans inside */
-  flex-direction: column;        /* vertical */
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;                      /* explicit spacing between lines */
+  gap: 3px;
   padding: 0;
   cursor: pointer;
 }
@@ -316,7 +230,6 @@ a:hover {
   background: #111827;
   border-radius: 999px;
   display: block;
-  margin: 0;                     /* no margin, we use gap on parent */
 }
 
 /* Hamburger dropdown */
@@ -445,30 +358,15 @@ a:hover {
   .hamburger-menu {
     right: 1.25rem;
   }
-
-  .pepper-launcher {
-    max-width: 100%;
-    margin: 0 0.75rem;
-  }
 }
 
-/* ===== Chat assistant widget ===== */
-
-/* Mount container hidden by default; opened via top launcher */
-#chatbot-root {
-  display: none;
-  margin-top: 1rem;
-}
-
-#chatbot-root.chat-open {
-  display: block;
-}
+/* ===== Chat assistant widget (sidebar) ===== */
 
 .chat-card {
   margin-top: 1rem;
   width: 100%;
   max-width: 100%;
-  height: 100%;                 /* fixed height */
+  height: 420px;                 /* fixed height */
   border-radius: 16px;
   border: 1px solid var(--border);
   background: #f9fafb;
