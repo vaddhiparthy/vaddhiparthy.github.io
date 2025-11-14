@@ -541,5 +541,57 @@
       }
     });
   </script>
+  <!-- Pepper full-screen overlay -->
+<div id="pepper-overlay" class="pepper-overlay">
+  <div class="pepper-overlay-backdrop"></div>
+  <div class="pepper-overlay-panel">
+    <button
+      class="pepper-close"
+      id="pepper-close"
+      aria-label="Close chat"
+    >
+      ×
+    </button>
+    <div id="chatbot-root"></div>
+  </div>
+</div>
+
+<script src="profile-assistant.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Mount chat UI inside the overlay panel
+    if (typeof initPepperChat === "function") {
+      initPepperChat("chatbot-root");
+    }
+
+    var launcher = document.getElementById("pepper-launcher");
+    var overlay  = document.getElementById("pepper-overlay");
+    var closeBtn = document.getElementById("pepper-close");
+    var backdrop = document.querySelector(".pepper-overlay-backdrop");
+
+    function openChat() {
+      if (!overlay) return;
+      overlay.classList.add("open");
+      var inputEl = overlay.querySelector("#pepper-input");
+      if (inputEl) inputEl.focus();
+    }
+
+    function closeChat() {
+      if (!overlay) return;
+      overlay.classList.remove("open");
+    }
+
+    if (launcher) launcher.addEventListener("click", openChat);
+    if (closeBtn) closeBtn.addEventListener("click", closeChat);
+    if (backdrop) backdrop.addEventListener("click", closeChat);
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        closeChat();
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
