@@ -108,23 +108,30 @@
     <!-- RIGHT SIDE -->
     <div class="main-column">
       <!-- TOP BAR WITH HAMBURGER -->
-      <header class="topbar">
-        <div class="topbar-title">
-          <span class="topbar-name">Sri Surya S. Vaddhiparthy</span>
-          <span class="topbar-sub">Data &amp; AI Engineer</span>
-        </div>
+ 111:       <header class="topbar">
+112:         <div class="topbar-title">
+113:           <span class="topbar-name">Sri Surya S. Vaddhiparthy</span>
+114:           <span class="topbar-sub">Data &amp; AI Engineer</span>
+115:         </div>
+116: 
+117:         <div class="pepper-launcher" id="pepper-launcher">
+118:           <span class="pepper-launcher-label">
+119:             Chat with Surya’s AI assistant…
+120:           </span>
+121:         </div>
+122: 
+123:         <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+124:           <span></span><span></span><span></span>
+125:         </button>
+126: 
+127:         <nav class="hamburger-menu" id="hamburger-menu">
+128:           <a href="#summary">Summary</a>
+129:           <a href="#research-interests">Research</a>
+130:           <a href="#projects">Projects</a>
+131:           <a href="#contact">Contact</a>
+132:         </nav>
+133:       </header>
 
-        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-
-        <nav class="hamburger-menu" id="hamburger-menu">
-          <a href="#summary">Summary</a>
-          <a href="#research-interests">Research</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </header>
 
       <!-- CONTENT CARD -->
       <main class="content">
@@ -539,9 +546,24 @@
       );
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      initPepperChat("chatbot-root");
-    });
+    541:     document.addEventListener("DOMContentLoaded", function () {
+542:       initPepperChat("chatbot-root");
+543: 
+544:       var launcher = document.getElementById("pepper-launcher");
+545:       var chatRoot = document.getElementById("chatbot-root");
+546: 
+547:       if (launcher && chatRoot) {
+548:         launcher.addEventListener("click", function () {
+549:           chatRoot.classList.toggle("chat-open");
+550: 
+551:           if (chatRoot.classList.contains("chat-open")) {
+552:             var inputEl = chatRoot.querySelector("#pepper-input");
+553:             if (inputEl) inputEl.focus();
+554:           }
+555:         });
+556:       }
+557:     });
+
   })();
 </script>
 
