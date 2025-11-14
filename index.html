@@ -89,7 +89,7 @@
           </ul>
         </div>
 
-        <!-- Sidebar AI Assistant (only place where chat lives) -->
+        <!-- Sidebar AI Assistant -->
         <section id="assistant" class="section">
           <h2>Discuss My Work with My AI Assistant</h2>
           <p>
@@ -105,13 +105,12 @@
 
     <!-- RIGHT SIDE -->
     <div class="main-column">
-      <!-- TOP BAR WITH HAMBURGER (no chat launcher here) -->
+      <!-- TOP BAR WITH HAMBURGER -->
       <header class="topbar">
         <div class="topbar-title">
           <span class="topbar-name">Sri Surya S. Vaddhiparthy</span>
           <span class="topbar-sub">Data &amp; AI Engineer</span>
         </div>
-
         <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -378,8 +377,8 @@
     </div>
   </div>
 
-  <!-- Hamburger menu + footer year -->
   <script>
+    // Hamburger menu
     const hamBtn = document.querySelector('.hamburger');
     const hamMenu = document.getElementById('hamburger-menu');
 
@@ -397,13 +396,15 @@
       });
     }
 
+    // Footer year
     const y = document.getElementById('year');
     if (y) y.textContent = new Date().getFullYear();
   </script>
 
-  <!-- Pepper chat widget (sidebar only) -->
+  <!-- Pepper chat script -->
   <script>
-    const API_BASE = "https://pepper-portfolio.onrender.com";
+  (function () {
+    const API_BASE = "https://pepper-portfolio.onrender.com";  // no trailing slash
     const CHAT_ENDPOINT = "/api/chat";
 
     function initPepperChat(mountId) {
@@ -436,6 +437,7 @@
       const orbEl      = root.querySelector("#pepper-orb");
 
       let sending = false;
+      const sessionId = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
 
       function scrollToBottom() {
         messagesEl.scrollTop = messagesEl.scrollHeight;
@@ -471,6 +473,7 @@
         if (!text.trim() || sending) return;
         sending = true;
 
+        // User bubble with single tick initially
         const userBubble = addMessage("user", text, "✓ sent");
         const metaEl = userBubble.querySelector(".message-meta");
 
@@ -484,7 +487,9 @@
           const resp = await fetch(API_BASE + CHAT_ENDPOINT, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: text })
+            body: JSON.stringify({
+              message: text
+            })
           });
 
           if (!resp.ok) {
@@ -519,7 +524,7 @@
         }
       });
 
-      // Initial greeting
+      // Optional: initial system message
       addMessage(
         "assistant",
         "Hi, I’m Pepper. Ask me about Surya’s projects, tech stack, or how he approaches problems."
@@ -529,6 +534,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       initPepperChat("chatbot-root");
     });
+  })();
   </script>
 </body>
 </html>
