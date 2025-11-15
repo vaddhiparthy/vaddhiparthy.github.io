@@ -87,47 +87,6 @@ The loader keeps the HTML skeleton stable and only populates the placeholders wi
 
 ---
 
-## Chat widgets
-
-### Pepper chat widget (full-width card)
-
-In `index.html`, an inline script defines a small initializer:
-
-```js
-const API_BASE = "https://pepper-portfolio.onrender.com";  // no trailing slash
-const CHAT_ENDPOINT = "/api/chat";
-
-function initPepperChat(mountId) {
-  const root = document.getElementById(mountId);
-  if (!root) return;
-
-  root.innerHTML = `
-    <div class="chat-card">
-      <div class="chat-header">
-        <div class="chat-orb state-idle" id="pepper-orb"></div>
-        <div>
-          <div class="chat-title-main">Pepper · AI Assistant</div>
-          <div class="chat-title-sub">Answers about Surya's work</div>
-        </div>
-      </div>
-      <div class="chat-messages" id="pepper-messages"></div>
-      <form class="chat-input-row" id="pepper-form">
-        <textarea
-          id="pepper-input"
-          rows="1"
-          placeholder="Ask about projects, tech stack, or how I work…"></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  `;
-
-  // …rest of the widget logic (message rendering, fetch call to API_BASE + CHAT_ENDPOINT, orb state handling)…
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  initPepperChat("chatbot-root");
-});
-
 ## Project layout
 
 ```text
