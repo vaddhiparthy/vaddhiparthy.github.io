@@ -1,0 +1,177 @@
+{
+  "sidebar": {
+    "avatar": {
+      "src": "data/display_picture.jpg",
+      "alt": "Profile photo"
+    },
+    "name": "Sri Surya S. Vaddhiparthy",
+    "headline_lines": [
+      "Senior Data & AI Engineer",
+      "LLM Systems, RAG & Recommender Architect"
+    ],
+    "degree_lines": [
+      "Master of Science (Data Science)",
+      "Western Michigan University"
+    ],
+    "location": "United States of America",
+    "employer": "Comerica Bank (via Collaborate Solutions)",
+    "nav": {
+      "main": [
+        { "href": "#summary", "label": "Professional Summary" },
+        { "href": "#research-interests", "label": "Research Interests" },
+        { "href": "#projects", "label": "Projects" },
+        { "href": "#contact", "label": "Contact" }
+      ],
+      "profiles": [
+        {
+          "type": "linkedin",
+          "chip": "in",
+          "label": "LinkedIn",
+          "href": "https://www.linkedin.com/in/vaddhiparthy/"
+        },
+        {
+          "type": "github",
+          "chip": "gh",
+          "label": "GitHub",
+          "href": "https://github.com/Vaddhiparthy/"
+        },
+        {
+          "type": "email",
+          "chip": "@",
+          "label": "Email",
+          "href": "mailto:surya@vaddhiparthy.com"
+        }
+      ]
+    }
+  },
+  "topbar": {
+    "name": "Sri Surya S. Vaddhiparthy",
+    "subtitle": "Data & AI Engineer"
+  },
+  "sections": {
+    "summary": {
+      "title": "Professional Summary",
+      "paragraphs": [
+        "I\u2019m a Senior Data & AI Engineer specializing in scalable data architecture and LLM infrastructure. My work spans distributed compute (Spark, ECS/Fargate), cloud data platforms (AWS, Snowflake), and agentic AI pipelines built with LangGraph, LangChain, Milvus/pgvector, RAGAS, and reranker-driven retrieval.",
+        "I design and deploy multi-cloud ELT/ETL systems with event-driven ingestion, metadata-rich lakehouse layers, semantic indexing, and dbt-validated transformations. My retrieval work includes hybrid search (BM25 + dense embeddings), vector-store optimization, and latency-aware context selection for real-world RAG deployments.",
+        "On the production side, I focus on containerized orchestration, Terraform-driven IaC, CI/CD automation, cost-efficient Snowflake optimization, and observability tooling (Langfuse, CloudWatch). My systems support high-throughput analytics, feature reuse, and reliable LLM inference at enterprise scale.",
+        "My core principle: architect data and AI systems that are fast, reproducible, fault-tolerant, and ready for real deployment."
+      ]
+    },    
+    "research_interests": {
+      "title": "Research Interests",
+      "items": [
+        "Scalable data systems \u2014 cloud-native data platforms, distributed pipelines, and reliability-focused ETL/ELT design.",
+        "LLM system engineering \u2014 retrieval architecture, embedding optimization, reranking, and production-grade RAG pipelines.",
+        "Agentic AI workflows \u2014 stateful multi-step reasoning, autonomous planning loops, and orchestration logic.",
+        "Data-centric AI \u2014 embedding quality, evaluation frameworks, observability, and latency/cost diagnostics.",
+        "Applied machine learning \u2014 tabular modeling, synthetic data generation, credit-risk scoring, and predictive systems.",
+        "Edge and connected-device analytics \u2014 telematics pipelines, GPS integrity modeling, and adaptive data delivery."
+      ]
+    },
+    "projects": {
+      "title": "Research & Development Projects",
+      "items": [
+        {
+          "title": "VideoSemanticAlignment \u2014 Vision\u2013Language Fine-Tuning Pipeline",
+          "url": null,
+          "description": "Constructs a preprocessing and training workflow that cleans event-level textual descriptions, aligns them with corresponding video segments, and fine-tunes a vision\u2013language model to associate visual content with narrative text, enabling supervised video-to-text semantic mapping for downstream inference. Fine-tuning and evaluations are nearly complete, and the team is preparing the peer-review manuscript for near-term publication.",
+          "tech_stack": "Python, Vision\u2013Language Models, Dataset Processing, LLM Fine-Tuning"
+        },
+        {
+          "title": "ASTRA-X Overthinker \u2014 Autonomous Goal Iteration Engine",
+          "url": "https://github.com/vaddhiparthy/ASTRA-X-Overthinker",
+          "description": "Orchestrates Markdown-defined goals into persona-aware, interval-scheduled LLM refinement loops with append-only progress journals and archival workflows.",
+          "tech_stack": "Python 3.12, Flask, APScheduler, Docker, Markdown, Ollama/OpenAI"
+        },
+        {
+          "title": "SynthScoreNet \u2014 Synthetic Credit Score Modeling (GANs)",
+          "url": "https://github.com/vaddhiparthy/SynthScoreNet",
+          "description": "Trains GANs on borrower attributes to generate synthetic credit populations and downstream score models for low-file-depth segments.",
+          "tech_stack": "Python, TensorFlow/PyTorch, GANs, Pandas, NumPy"
+        },
+        {
+          "title": "Domain-Adaptive GPT-2 Fine-Tuning",
+          "url": "https://github.com/vaddhiparthy/GPT",
+          "description": "Fine-tunes GPT-2 on custom corpora with tokenizer customization and training pipelines for domain-specific text generation.",
+          "tech_stack": "Python, HuggingFace Transformers, PyTorch"
+        },
+        {
+          "title": "ReviewSentiments \u2014 App-Review Intelligence Pipeline",
+          "url": "https://github.com/vaddhiparthy/ReviewSentiments",
+          "description": "Builds an NLP pipeline for sentiment scoring, topic extraction, and feature-vector modeling on Google Play Store reviews.",
+          "tech_stack": "Python, NLTK, VADER, TF-IDF, Scikit-learn"
+        },
+        {
+          "title": "ImageClassification \u2014 Transfer Learning with ResNet-18",
+          "url": "https://github.com/vaddhiparthy/ImageClassfication",
+          "description": "Applies transfer learning on ResNet-18 with structured augmentation and training loops for high-accuracy image classification.",
+          "tech_stack": "Python, PyTorch, Torchvision"
+        },
+        {
+          "title": "SecureLog \u2014 AWS SQS Log Ingestion Pipeline",
+          "url": "https://github.com/vaddhiparthy/SecureLog",
+          "description": "Processes authentication logs from SQS into PostgreSQL with schema enforcement, idempotent consumers, and durable storage.",
+          "tech_stack": "AWS SQS, Python, PostgreSQL"
+        },
+        {
+          "title": "Location Selection via K-Means (Geospatial Analytics)",
+          "url": "https://github.com/vaddhiparthy/Location-Selection-using-K-means-clustering",
+          "description": "Uses K-Means clustering on geospatial features to discover commercial hotspots and analyze centroid-based catchment zones.",
+          "tech_stack": "Python, Scikit-learn, GeoJSON"
+        },
+        {
+          "title": "ForestFireEstimation \u2014 Burn-Area Prediction Model",
+          "url": "https://github.com/vaddhiparthy/ForestfireEstimation",
+          "description": "Trains regression models on meteorological and environmental signals to estimate forest-fire burn area and error profiles.",
+          "tech_stack": "Python, Scikit-learn, Pandas"
+        },
+        {
+          "title": "GHG Emission Analysis \u2014 R-Based Climate Analytics",
+          "url": "https://github.com/vaddhiparthy/GHG",
+          "description": "Performs tidyverse-based wrangling and visualization of national GHG emissions for temporal and cross-country diagnostics.",
+          "tech_stack": "R, dplyr, ggplot2"
+        },
+        {
+          "title": "BlogSentimentAnalysis \u2014 Linguistic Polarity Pipeline",
+          "url": "https://github.com/vaddhiparthy/BlogSentimentAnalysis",
+          "description": "Runs polarity and subjectivity analysis on large blog corpora with token stats, sentiment scoring, and word-frequency views.",
+          "tech_stack": "Python, TextBlob, WordCloud"
+        },
+        {
+          "title": "IMS \u2014 Telematics-Driven Insurance ML Pipeline",
+          "url": "https://github.com/vaddhiparthy/IMS",
+          "description": "Engineers telematics features from driving behavior and trains supervised models to estimate insurance claim likelihood.",
+          "tech_stack": "Python, Scikit-learn"
+        },
+        {
+          "title": "Credit Risk Scoring with XGBoost",
+          "url": "https://github.com/vaddhiparthy/credit_risk",
+          "description": "Builds XGBoost-based credit-default predictors with class-balancing strategies and AUC-driven model selection.",
+          "tech_stack": "Python, XGBoost, Pandas"
+        },
+        {
+          "title": "COVID Trend Analysis \u2014 Time-Series Forecasting",
+          "url": "https://github.com/vaddhiparthy/COVID-Data-Analysis",
+          "description": "Analyzes U.S. COVID-19 metrics and fits ARIMA-based models for trend projection and dashboard-ready time-series outputs.",
+          "tech_stack": "Python, Pandas, Matplotlib, ARIMA"
+        },
+        {
+          "title": "Stock Data Analysis Tool \u2014 Seeking Alpha Integration",
+          "url": "https://github.com/vaddhiparthy/stock-data-analysis-tool",
+          "description": "Aggregates KPI and growth metrics for multiple tickers via Seeking Alpha APIs with normalized DataFrame-based analytics.",
+          "tech_stack": "Python, REST APIs, DataFrames"
+        }
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "email": "surya@vaddhiparthy.com",
+      "linkedin_url": "https://www.linkedin.com/in/vaddhiparthy/",
+      "cal_url": "https://cal.com/vaddhiparthy/15min"
+    }    
+  },
+  "footer": {
+    "text": "\u00a9 Sri Surya S. Vaddhiparthy"
+  }
+}

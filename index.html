@@ -5,28 +5,23 @@
   <title>Sri Surya S. Vaddhiparthy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/profile-assistant.css">
 </head>
 <body>
   <div class="layout">
     <!-- LEFT SIDEBAR -->
     <aside class="sidebar">
       <div class="sidebar-inner">
-        <!-- Static avatar (from display_picture.jpg) -->
+        <!-- Static avatar (from data/display_picture.jpg) -->
         <div class="avatar">
           <div class="avatar-circle">
-            <img src="display_picture.jpg" alt="Profile photo">
+            <img id="avatar-img" src="" alt="">
           </div>
         </div>
 
-        <h1 class="name">Sri Surya S. Vaddhiparthy</h1>
-        <p class="headline">
-          Senior Data &amp; AI Engineer<br>
-          LLM Systems, RAG &amp; Recommender Architect
-        </p>
-        <p class="degree">
-          Master of Science (Data Science)<br>
-          Western Michigan University
-        </p>
+        <h1 class="name" id="sidebar-name"></h1>
+        <p class="headline" id="sidebar-headline"></p>
+        <p class="degree" id="sidebar-degree"></p>
 
         <ul class="meta">
           <!-- Location -->
@@ -34,11 +29,11 @@
             <span class="icon">
               <!-- Location Pin (Minimal, Black) -->
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
               </svg>
             </span>
-            United States of America
+            <span id="sidebar-location"></span>
           </li>
 
           <!-- Employer -->
@@ -50,55 +45,31 @@
                 <path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"></path>
               </svg>
             </span>
-            Comerica Bank (via Collaborate Solutions)
+            <span id="sidebar-employer"></span>
           </li>
         </ul>
 
         <!-- Navigation -->
         <div class="nav-block">
           <div class="nav-title">Main</div>
-          <ul class="sidebar-links">
-            <li><a href="#summary">Professional Summary</a></li>
-            <li><a href="#research-interests">Research Interests</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+          <ul class="sidebar-links" id="nav-main"></ul>
         </div>
 
         <div class="nav-block">
           <div class="nav-title">Profiles &amp; Contact</div>
-          <ul class="sidebar-links">
-            <li>
-              <span class="chip-icon">in</span>
-              <a href="https://www.linkedin.com/in/vaddhiparthy/" target="_blank" rel="noopener">
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <span class="chip-icon">gh</span>
-              <a href="https://github.com/Vaddhiparthy/" target="_blank" rel="noopener">
-                GitHub
-              </a>
-            </li>
-            <li>
-              <span class="chip-icon">@</span>
-              <a href="mailto:surya@vaddhiparthy.com">
-                Email
-              </a>
-            </li>
-          </ul>
+          <ul class="sidebar-links" id="nav-profiles"></ul>
         </div>
-
-        <!-- Sidebar AI Assistant -->
+                <!-- Sidebar AI Assistant -->
         <section id="assistant" class="section">
           <h2> Discuss Surya's work with his AI Assistant</h2>
           <p>
-            A portfolio-augmented LLM that knows Surya's projects, stack, and research direction.            
+            A portfolio-augmented LLM that knows Surya's projects, stack, and research direction.
           </p>
 
           <!-- CHATBOX MOUNT -->
           <div id="chatbot-root"></div>
         </section>
+
       </div>
     </aside>
 
@@ -107,9 +78,10 @@
       <!-- TOP BAR WITH HAMBURGER -->
       <header class="topbar">
         <div class="topbar-title">
-          <span class="topbar-name">Sri Surya S. Vaddhiparthy</span>
-          <span class="topbar-sub">Data &amp; AI Engineer</span>
+          <span class="topbar-name" id="topbar-name"></span>
+          <span class="topbar-sub" id="topbar-sub"></span>
         </div>
+
         <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -126,258 +98,58 @@
       <main class="content">
         <!-- Professional Summary -->
         <section id="summary" class="section">
-          <h2>Professional Summary</h2>
-          <p>
-            I’m a Senior Data &amp; AI Engineer specializing in scalable data architecture
-            and LLM infrastructure. My work spans distributed compute (Spark, ECS/Fargate),
-            cloud data platforms (AWS, Snowflake), and agentic AI pipelines built with
-            LangGraph, LangChain, Milvus/pgvector, RAGAS, and reranker-driven retrieval.
-          </p>
-          <p>
-            I design and deploy multi-cloud ELT/ETL systems with event-driven ingestion,
-            metadata-rich lakehouse layers, semantic indexing, and dbt-validated
-            transformations. My retrieval work includes hybrid search (BM25 + dense
-            embeddings), vector-store optimization, and latency-aware context selection
-            for real-world RAG deployments.
-          </p>
-          <p>
-            On the production side, I focus on containerized orchestration,
-            Terraform-driven IaC, CI/CD automation, cost-efficient Snowflake
-            optimization, and observability tooling (Langfuse, CloudWatch).
-            My systems support high-throughput analytics, feature reuse, and reliable
-            LLM inference at enterprise scale.
-          </p>
-          <p>
-            My core principle: architect data and AI systems that are fast,
-            reproducible, fault-tolerant, and ready for real deployment.
-          </p>
+          <h2 id="summary-title"></h2>
+          <div id="summary-body"></div>
+        </section>
+
+        <!-- Chat Mount Point (UI already implemented elsewhere) -->
+        <section id="chat-section" class="section">
+          <h2 id="chat-title"></h2>
+          <p id="chat-description"></p>
+          <div id="chat-mount"></div>
         </section>
 
         <!-- Research Interests -->
         <section id="research-interests" class="section">
-          <h2>Research Interests</h2>
-          <ul>
-            <li>Scalable data systems — cloud-native data platforms, distributed pipelines, and reliability-focused ETL/ELT design.</li>
-            <li>LLM system engineering — retrieval architecture, embedding optimization, reranking, and production-grade RAG pipelines.</li>
-            <li>Agentic AI workflows — stateful multi-step reasoning, autonomous planning loops, and orchestration logic.</li>
-            <li>Data-centric AI — embedding quality, evaluation frameworks, observability, and latency/cost diagnostics.</li>
-            <li>Applied machine learning — tabular modeling, synthetic data generation, credit-risk scoring, and predictive systems.</li>
-            <li>Edge and connected-device analytics — telematics pipelines, GPS integrity modeling, and adaptive data delivery.</li>
-          </ul>
+          <h2 id="research-title"></h2>
+          <ul id="research-list"></ul>
         </section>
 
         <!-- Projects -->
         <section id="projects" class="section">
-          <h2>Research &amp; Development Projects</h2>
-
-          <div class="project">
-            <h3>VideoSemanticAlignment — Vision–Language Fine-Tuning Pipeline</h3>
-            <p>
-              Constructs a preprocessing and training workflow that cleans event-level textual descriptions,
-              aligns them with corresponding video segments, and fine-tunes a vision–language model to associate
-              visual content with narrative text, enabling supervised video-to-text semantic mapping for downstream inference.
-              Fine-tuning and evaluations are nearly complete, and the team is preparing the peer-review manuscript
-              for near-term publication.
-            </p>
-            <p><strong>Tech Stack:</strong> Python, Vision–Language Models, Dataset Processing, LLM Fine-Tuning</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/ASTRA-X-Overthinker" target="_blank" rel="noopener">
-                ASTRA-X Overthinker — Autonomous Goal Iteration Engine
-              </a>
-            </h3>
-            <p>
-              Orchestrates Markdown-defined goals into persona-aware, interval-scheduled LLM refinement loops with append-only progress journals and archival workflows.
-            </p>
-            <p><strong>Tech Stack:</strong> Python 3.12, Flask, APScheduler, Docker, Markdown, Ollama/OpenAI</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/SynthScoreNet" target="_blank" rel="noopener">
-                SynthScoreNet — Synthetic Credit Score Modeling (GANs)
-              </a>
-            </h3>
-            <p>
-              Trains GANs on borrower attributes to generate synthetic credit populations and downstream score models for low-file-depth segments.
-            </p>
-            <p><strong>Tech Stack:</strong> Python, TensorFlow/PyTorch, GANs, Pandas, NumPy</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/GPT" target="_blank" rel="noopener">
-                Domain-Adaptive GPT-2 Fine-Tuning
-              </a>
-            </h3>
-            <p>
-              Fine-tunes GPT-2 on custom corpora with tokenizer customization and training pipelines for domain-specific text generation.
-            </p>
-            <p><strong>Tech Stack:</strong> Python, HuggingFace Transformers, PyTorch</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/ReviewSentiments" target="_blank" rel="noopener">
-                ReviewSentiments — App-Review Intelligence Pipeline
-              </a>
-            </h3>
-            <p>
-              Builds an NLP pipeline for sentiment scoring, topic extraction, and feature-vector modeling on Google Play Store reviews.
-            </p>
-            <p><strong>Tech Stack:</strong> Python, NLTK, VADER, TF-IDF, Scikit-learn</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/ImageClassfication" target="_blank" rel="noopener">
-                ImageClassification — Transfer Learning with ResNet-18
-              </a>
-            </h3>
-            <p>
-              Applies transfer learning on ResNet-18 with structured augmentation and training loops for high-accuracy image classification.
-            </p>
-            <p><strong>Tech Stack:</strong> Python, PyTorch, Torchvision</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/SecureLog" target="_blank" rel="noopener">
-                SecureLog — AWS SQS Log Ingestion Pipeline
-              </a>
-            </h3>
-            <p>
-              Processes authentication logs from SQS into PostgreSQL with schema enforcement, idempotent consumers, and durable storage.
-            </p>
-            <p><strong>Tech Stack:</strong> AWS SQS, Python, PostgreSQL</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/Location-Selection-using-K-means-clustering" target="_blank" rel="noopener">
-                Location Selection via K-Means (Geospatial Analytics)
-              </a>
-            </h3>
-            <p>
-              Uses K-Means clustering on geospatial features to discover commercial hotspots and analyze centroid-based catchment zones.
-            </p>
-            <p><strong>Tech Stack:</strong> Python, Scikit-learn, GeoJSON</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/ForestfireEstimation" target="_blank" rel="noopener">
-                ForestFireEstimation — Burn-Area Prediction Model
-              </a>
-            </h3>
-            <p>
-              Trains regression models on meteorological and environmental signals to estimate forest-fire burn area and error profiles.
-            </p>
-            <p><strong>Tech Stack:</strong> Python, Scikit-learn, Pandas</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/GHG" target="_blank" rel="noopener">
-                GHG Emission Analysis — R-Based Climate Analytics
-              </a>
-            </h3>
-            <p>
-              Performs tidyverse-based wrangling and visualization of national GHG emissions for temporal and cross-country diagnostics.
-            </p>
-            <p><strong>Tech Stack:</strong> R, dplyr, ggplot2</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/BlogSentimentAnalysis" target="_blank" rel="noopener">
-                BlogSentimentAnalysis — Linguistic Polarity Pipeline
-              </a>
-            </h3>
-            <p>
-              Runs polarity and subjectivity analysis on large blog corpora with token stats, sentiment scoring, and word-frequency views.
-            </p>
-            <p><strong>Tech Stack:</strong> Python, TextBlob, WordCloud</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/IMS" target="_blank" rel="noopener">
-                IMS — Telematics-Driven Insurance ML Pipeline
-              </a>
-            </h3>
-            <p>
-              Engineers telematics features from driving behavior and trains supervised models to estimate insurance claim likelihood.
-            </p>
-            <p><strong>Tech Stack:</strong> Python, Scikit-learn</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/credit_risk" target="_blank" rel="noopener">
-                Credit Risk Scoring with XGBoost
-              </a>
-            </h3>
-            <p>
-              Builds XGBoost-based credit-default predictors with class-balancing strategies and AUC-driven model selection.
-            </p>
-            <p><strong>Tech Stack:</strong> Python, XGBoost, Pandas</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/COVID-Data-Analysis" target="_blank" rel="noopener">
-                COVID Trend Analysis — Time-Series Forecasting
-              </a>
-            </h3>
-            <p>
-              Analyzes U.S. COVID-19 metrics and fits ARIMA-based models for trend projection and dashboard-ready time-series outputs.
-            </p>
-            <p><strong>Tech Stack:</strong> Python, Pandas, Matplotlib, ARIMA</p>
-          </div>
-
-          <div class="project">
-            <h3>
-              <a href="https://github.com/vaddhiparthy/stock-data-analysis-tool" target="_blank" rel="noopener">
-                Stock Data Analysis Tool — Seeking Alpha Integration
-              </a>
-            </h3>
-            <p>
-              Aggregates KPI and growth metrics for multiple tickers via Seeking Alpha APIs with normalized DataFrame-based analytics.
-            </p>
-            <p><strong>Tech Stack:</strong> Python, REST APIs, DataFrames</p>
-          </div>
+          <h2 id="projects-title"></h2>
+          <div id="projects-list"></div>
         </section>
 
-        <!-- Contact stub -->
+        <!-- Contact -->
         <section id="contact" class="section">
-          <h2>Contact</h2>
-          <p>
-            For opportunities, collaborations, or technical discussions, reach me at
-            <a href="mailto:surya@vaddhiparthy.com">surya@vaddhiparthy.com</a> or via
-            <a href="https://www.linkedin.com/in/vaddhiparthy/" target="_blank" rel="noopener">
-              LinkedIn
-            </a>.
-          </p>
-          <p>
-            To schedule a meeting directly, use:
-            <a href="https://cal.com/vaddhiparthy/15min" target="_blank" rel="noopener">
-              https://cal.com/vaddhiparthy/15min
-            </a>.
-          </p>
+          <h2 id="contact-title"></h2>
+          <div id="contact-body"></div>
+        </section>
+
+        <!-- Chatbot landing zone -->
+        <section id="assistant" class="section">
+          <h2 id="assistant-title"></h2>
+          <div id="chatbot-root"></div>
+          <p id="assistant-description"></p>
         </section>
 
         <footer class="footer">
-          © <span id="year"></span> Sri Surya S. Vaddhiparthy
+          <span id="footer-text"></span>
+          <span id="year"></span>
         </footer>
       </main>
     </div>
   </div>
 
+  <!-- Content loader (fills everything from data/site-content.json) -->
+  <script src="assets/js/site-content-loader.js"></script>
+
+  <!-- Existing profile assistant UI JS (unchanged) -->
+  <script src="assets/js/profile-assistant.js"></script>
+
   <script>
-    // Hamburger menu
+    // Hamburger menu logic (unchanged)
     const hamBtn = document.querySelector('.hamburger');
     const hamMenu = document.getElementById('hamburger-menu');
 
@@ -394,13 +166,12 @@
         });
       });
     }
-
-    // Footer year
-    const y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
   </script>
 
-  <!-- Pepper chat script -->
+    <!-- JSON → DOM loader -->
+  <script src="assets/js/site-content-loader.js"></script>
+
+  <!-- Pepper chat script (hard-coded, same behaviour as old site) -->
   <script>
   (function () {
     const API_BASE = "https://pepper-portfolio.onrender.com";  // no trailing slash
@@ -535,5 +306,8 @@
     });
   })();
   </script>
+</body>
+</html>
+
 </body>
 </html>
