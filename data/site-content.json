@@ -73,107 +73,115 @@
     "research_interests": {
       "title": "Research Interests",
       "items": [
-        "Scalable data systems - cloud-native data platforms, distributed pipelines, and reliability-focused ETL/ELT design.",
-        "LLM system engineering - retrieval architecture, embedding optimization, reranking, and production-grade RAG pipelines.",
-        "Agentic AI workflows - stateful multi-step reasoning, autonomous planning loops, and orchestration logic.",
-        "Data-centric AI - embedding quality, evaluation frameworks, observability, and latency/cost diagnostics.",
-        "Applied machine learning - tabular modeling, synthetic data generation, credit-risk scoring, and predictive systems.",
-        "Edge and connected-device analytics - telematics pipelines, GPS integrity modeling, and adaptive data delivery."
+        "Scalable Data Pipelines & Streaming - Python, SQL, Kafka, Spark, PySpark, batch and streaming pipelines",
+        "Cloud-Native Data Platforms - AWS (S3, Glue, Lambda, ECS/Fargate, Redshift), GCP BigQuery, Snowflake, Databricks, Delta Lake",
+        "Data Modeling for Analytics & AI - Star schema, snowflake schema, dimensional modeling, Data Vault, semantic layers, metadata modeling",
+        "Retrieval-Augmented LLM Systems - LangGraph, LangChain, RAG, vector databases (Milvus, pgvector, FAISS), rerankers (bge-reranker, Cohere Rerank), prompt engineering, LLM evaluation",
+        "Pipeline Orchestration & Reproducibility - Airflow, dbt, Prefect, incremental loads, snapshots, data contracts",
+        "Data Quality & Observability - Great Expectations, Monte Carlo, data SLAs, lineage, monitoring and tracing, incident runbooks",
+        "Analytics Semantics & Decision Support - Looker (LookML, Explores), Tableau, Power BI, KPI design and governance",
+        "MLOps / LLMOps & Infra Automation - Docker, Kubernetes, Terraform, Jenkins, Git, CI/CD automation"
       ]
     },
     "projects": {
       "title": "Research & Development Projects",
       "items": [
         {
-          "title": "VideoSemanticAlignment — Vision–Language Fine-Tuning Pipeline",
+          "title": "VideoSemanticAlignment: Vision–Language Fine-Tuning Pipeline",
           "url": "",
           "description": "Constructs a preprocessing and training workflow that cleans event-level textual descriptions, aligns them with corresponding video segments, and fine-tunes a vision–language model to associate visual content with narrative text, enabling supervised video-to-text semantic mapping for downstream inference. Fine-tuning and evaluations are nearly complete, and the team is preparing the peer-review manuscript for near-term publication.",
           "tech_stack": "Python, Vision–Language Models, Dataset Processing, LLM Fine-Tuning"
         },
         {
-          "title": "ASTRA-X Overthinker — Autonomous Goal Iteration Engine",
+          "title": "ASTRA-X Overthinker · Persona-Aware Goal Engine",
           "url": "https://github.com/vaddhiparthy/ASTRA-X-Overthinker",
-          "description": "Orchestrates Markdown-defined goals into persona-aware, interval-scheduled LLM refinement loops with append-only progress journals and archival workflows.",
-          "tech_stack": "Python 3.12, Flask, APScheduler, Docker, Markdown, Ollama/OpenAI"
+          "description": "Flask + APScheduler app that iteratively refines Markdown-based goals using an LLM and a rich persona file. It maintains per-goal files, appends timestamped progress, tracks iterations, and builds short, human-readable changelogs and daily digests.",
+          "tech_stack": "Python 3, Flask, APScheduler, YAML, Markdown, Ollama, zoneinfo (ET), requests, Jinja2"
         },
         {
-          "title": "SynthScoreNet — Synthetic Credit Score Modeling (GANs)",
+          "title": "Synthetic Credit Score Estimator (GAN + Regression)",
           "url": "https://github.com/vaddhiparthy/SynthScoreNet",
-          "description": "Trains GANs on borrower attributes to generate synthetic credit populations and downstream score models for low-file-depth segments.",
-          "tech_stack": "Python, TensorFlow/PyTorch, GANs, Pandas, NumPy"
+          "description": "Built a TensorFlow GAN to generate synthetic credit-feature rows from limited real data and trained a regression model on the synthetic set to predict a custom creditworthiness score for users with thin or no credit history (using features like income, purchase price, demographics, and phone-number age).",
+          "tech_stack": "Python, NumPy, Pandas, TensorFlow / Keras (GAN), scikit-learn (LinearRegression)."
         },
         {
-          "title": "Domain-Adaptive GPT-2 Fine-Tuning",
-          "url": "https://github.com/vaddhiparthy/GPT",
-          "description": "Fine-tunes GPT-2 on custom corpora with tokenizer customization and training pipelines for domain-specific text generation.",
-          "tech_stack": "Python, HuggingFace Transformers, PyTorch"
+          "title": "GPT-2 Fine-Tuning Pipeline (Hugging Face Transformers)",
+          "url": "https://github.com/vaddhiparthy/GPT-2-Fine-Tuning",
+          "description": "End-to-end Python pipeline that installs dependencies, builds a tokenized text dataset, fine-tunes GPT-2 on a custom corpus using Trainer, evaluates perplexity on a test split, and visualizes training loss over time.",
+          "tech_stack": "Python, PyTorch, Hugging Face Transformers, Datasets, Matplotlib."
         },
         {
-          "title": "ReviewSentiments — App-Review Intelligence Pipeline",
-          "url": "https://github.com/vaddhiparthy/ReviewSentiments",
-          "description": "Builds an NLP pipeline for sentiment scoring, topic extraction, and feature-vector modeling on Google Play Store reviews.",
-          "tech_stack": "Python, NLTK, VADER, TF-IDF, Scikit-learn"
+          "title": "Topic-Aware Sentiment Analysis for App Reviews",
+          "url": "https://github.com/vaddhiparthy/Topic-Aware-Sentiment-Analysis",
+          "description": "Python pipeline that ingests mobile app reviews from an API, cleans text, performs VADER sentiment analysis, tags reviews by UX topics (interface, load time, etc.), and generates per-topic word clouds plus positive vs. negative sentiment distributions for product teams.",
+          "tech_stack": "Python, Requests, Pandas, NLTK, VADER, Matplotlib, WordCloud, Seaborn."
         },
         {
-          "title": "ImageClassification — Transfer Learning with ResNet-18",
-          "url": "https://github.com/vaddhiparthy/ImageClassfication",
-          "description": "Applies transfer learning on ResNet-18 with structured augmentation and training loops for high-accuracy image classification.",
+          "title": "Image Classification with Pre-Trained ResNet18",
+          "url": "https://github.com/vaddhiparthy/ImageClassfication-ResNet18",
+          "description": "PyTorch script that loads a pre-trained ResNet-18 model, runs it on a local image, and prints the top-k ImageNet class predictions.",
           "tech_stack": "Python, PyTorch, Torchvision"
         },
         {
-          "title": "SecureLog — AWS SQS Log Ingestion Pipeline",
-          "url": "https://github.com/vaddhiparthy/SecureLog",
-          "description": "Processes authentication logs from SQS into PostgreSQL with schema enforcement, idempotent consumers, and durable storage.",
-          "tech_stack": "AWS SQS, Python, PostgreSQL"
+          "title": "Login Events ETL (SQS → Postgres with Hash Masking)",
+          "url": "https://github.com/vaddhiparthy/Login-Events-ETL",
+          "description": "Python ETL that consumes login events from an AWS SQS queue (via LocalStack), pseudonymizes sensitive fields with SHA-256 hashing, and loads them into a Postgres `user_logins` table.",
+          "tech_stack": "Python, boto3, psycopg2, PostgreSQL, Docker"
         },
         {
-          "title": "Location Selection via K-Means (Geospatial Analytics)",
+          "title": "Urban Geospatial Analytics with Foursquare & Open City Data",
           "url": "https://github.com/vaddhiparthy/Location-Selection-using-K-means-clustering",
-          "description": "Uses K-Means clustering on geospatial features to discover commercial hotspots and analyze centroid-based catchment zones.",
-          "tech_stack": "Python, Scikit-learn, GeoJSON"
+          "description": "This project contains a set of Jupyter notebooks that use geospatial data, the Foursquare Places API, and open city datasets to analyze how venues and infrastructure are distributed across NYC and Toronto neighborhoods.",
+          "tech_stack": "Python, Jupyter Notebooks, pandas, NumPy, Foursquare Places API, BeautifulSoup, scikit-learn, Folium, geopy, Matplotlib"
         },
         {
-          "title": "ForestFireEstimation — Burn-Area Prediction Model",
-          "url": "https://github.com/vaddhiparthy/ForestfireEstimation",
-          "description": "Trains regression models on meteorological and environmental signals to estimate forest-fire burn area and error profiles.",
-          "tech_stack": "Python, Scikit-learn, Pandas"
+          "title": "Forest Fire Burned Area Prediction (Montesinho, Portugal)",
+          "url": "https://github.com/vaddhiparthy/Forest-Fire-Estimation",
+          "description": "Regression analysis of Portuguese forest fires in Montesinho park, using meteorological variables and Fire Weather Index (FWI) components to predict log-scaled burned area, with skewness/outlier handling and linear vs polynomial regression models.",
+          "tech_stack": "pandas, NumPy, matplotlib, seaborn, SciPy (zscore), scikit-learn (LinearRegression, PolynomialFeatures, train_test_split)"
         },
         {
-          "title": "GHG Emission Analysis — R-Based Climate Analytics",
-          "url": "https://github.com/vaddhiparthy/GHG",
-          "description": "Performs tidyverse-based wrangling and visualization of national GHG emissions for temporal and cross-country diagnostics.",
-          "tech_stack": "R, dplyr, ggplot2"
+          "title": "GeoSpatial Climate Analytics: Forest Fires & Global GHG Emissions",
+          "url": "https://github.com/vaddhiparthy/GeoSpatial-Climate-Analytics",
+          "description": "Collection of geospatial climate analytics mini-projects, including forest-fire burned-area prediction in Portugal and international greenhouse gas emission analysis with R, Python and Shiny.",
+          "tech_stack": "dplyr, ggplot2, shiny, rmarkdown, knitr"
         },
         {
-          "title": "BlogSentimentAnalysis — Linguistic Polarity Pipeline",
-          "url": "https://github.com/vaddhiparthy/BlogSentimentAnalysis",
-          "description": "Runs polarity and subjectivity analysis on large blog corpora with token stats, sentiment scoring, and word-frequency views.",
-          "tech_stack": "Python, TextBlob, WordCloud"
+          "title": "Blog Sentiment & Subjectivity Analysis by Age Group",
+          "url": "https://github.com/vaddhiparthy/Blog-Sentiment-Subjectivity-Analysis",
+          "description": "Python-based text analytics pipeline on the blogtext.csv corpus (50,000 posts). The code cleans raw blog text, assigns bloggers to age groups, computes TextBlob polarity and subjectivity scores, and visualizes sentiment distributions, age/gender effects, and topic-specific word clouds.",
+          "tech_stack": "Python, pandas, numpy, matplotlib, seaborn, NLTK, TextBlob, WordCloud, regex"
         },
         {
-          "title": "IMS — Telematics-Driven Insurance ML Pipeline",
-          "url": "https://github.com/vaddhiparthy/IMS",
-          "description": "Engineers telematics features from driving behavior and trains supervised models to estimate insurance claim likelihood.",
-          "tech_stack": "Python, Scikit-learn"
+          "title": "Insurance Management System – Telematics Claim Prediction",
+          "url": "https://github.com/vaddhiparthy/Insurance-Management-System",
+          "description": "Machine-learning pipeline that uses synthetic driver telematics and policy attributes to predict whether a policy will generate an insurance claim. The system tackles extreme class imbalance, compares multiple classification algorithms, and exports UI-ready predictions to drive a front-end Insurance Management System.",
+          "tech_stack": "Python, pandas, NumPy, scikit-learn, XGBoost, imbalanced-learn (SMOTE, SMOTE-Tomek), matplotlib, seaborn, Jupyter"
         },
         {
-          "title": "Credit Risk Scoring with XGBoost",
-          "url": "https://github.com/vaddhiparthy/credit_risk",
-          "description": "Builds XGBoost-based credit-default predictors with class-balancing strategies and AUC-driven model selection.",
-          "tech_stack": "Python, XGBoost, Pandas"
+          "title": "Alternative Data Credit Default Risk Model (XGBoost + SMOTE)",
+          "url": "https://github.com/vaddhiparthy/Alternative-Data-Credit-Default-Risk-Model",
+          "description": "End-to-end ML pipeline predicting credit default risk for borrowers with limited history using the Home Credit dataset. The project covers data cleaning, feature selection, SMOTE handling of severe class imbalance, model benchmarking, and deployment of an XGBoost classifier with ~95% accuracy and robust precision/recall for defaulters.",
+          "tech_stack": "Python, NumPy, pandas, Matplotlib, Seaborn, scikit-learn, imbalanced-learn (SMOTE), XGBoost, Jupyter Notebook"
         },
         {
           "title": "COVID Trend Analysis — Time-Series Forecasting",
-          "url": "https://github.com/vaddhiparthy/COVID-Data-Analysis",
+          "url": "https://github.com/vaddhiparthy/COVID-Trend-Analysis",
           "description": "Analyzes U.S. COVID-19 metrics and fits ARIMA-based models for trend projection and dashboard-ready time-series outputs.",
-          "tech_stack": "Python, Pandas, Matplotlib, ARIMA"
+          "tech_stack": "Python, Jupyter, pandas, NumPy, statsmodels, pmdarima, scikit-learn, matplotlib, seaborn, folium"
         },
         {
-          "title": "Stock Data Analysis Tool — Seeking Alpha Integration",
+          "title": "Stock Data Analysis Tool — Multi-API Equity Metrics Pipeline",
           "url": "https://github.com/vaddhiparthy/stock-data-analysis-tool",
-          "description": "Aggregates KPI and growth metrics for multiple tickers via Seeking Alpha APIs with normalized DataFrame-based analytics.",
-          "tech_stack": "Python, REST APIs, DataFrames"
-        }        
+          "description": "Python toolkit that calls multiple financial data APIs (Seeking Alpha, Financial Modeling Prep, Alpha Vantage), computes growth and valuation metrics (cash flow growth, EPS and revenue growth, market multiples, margins, ROE, PE dynamics), and writes a fully shaped metrics table into Excel/CSV/TXT for further screening and analysis.",
+          "tech_stack": "Python, http.client, requests, pandas, certifi, ssl, ExcelWriter, Seeking Alpha API (RapidAPI), Financial Modeling Prep API, Alpha Vantage API"
+        },
+        {
+          "title": "Pepper Portfolio Assistant — LLM-Backed Profile Chat API (Available to use in sidebar of this page)",
+          "url": "https://github.com/vaddhiparthy/Pepper_portfolio",
+          "description": "FastAPI backend that serves Pepper, a locked-down profile assistant for Surya’s portfolio site. It loads curated LinkedIn/GitHub/site text plus a system prompt, builds scoped chat messages, calls the OpenAI Chat Completions API, and exposes a CORS-restricted /api/profile-assistant and /api/chat endpoint that only accepts traffic from surya.vaddhiparthy.com.",
+          "tech_stack": "Python, FastAPI, Uvicorn, CORSMiddleware, Pydantic / pydantic-settings, OpenAI Python SDK, Render (deployment), .env-based configuration"
+        }
       ]
     },
     "contact": {
