@@ -1,110 +1,88 @@
 # AI-Augmented Portfolio Layout & Pepper Assistant Frontend
 
-JSON-driven personal portfolio frontend with a built-in LLM chat assistant (“Pepper”).  
-The layout is a responsive two-column profile site where all text content is loaded from `data/site-content.json`, and an inline chat widget talks to a backend `/api/chat` endpoint.
+JSON-driven personal portfolio frontend with an inline LLM chat assistant.  
+The site is a static two-column layout where all content comes from `data/site-content.json`, and the chat widget posts to a configurable `/api/chat` endpoint.
 
 ---
 
 ## What it does
 
-- Renders a **sidebar + main content** portfolio layout from a static HTML shell and a JSON config file.
-- Populates sections (summary, research interests, projects, contact, assistant landing) from `data/site-content.json` at runtime.
-- Embeds a **Pepper chat widget**: a WhatsApp-style conversation UI that sends user messages to `https://pepper-portfolio.onrender.com/api/chat`.
+- Renders a **sidebar + main content** portfolio layout from a static HTML shell + JSON.
+- Loads sections (summary, research interests, projects, contact, assistant landing) from `site-content.json` at runtime.
+- Embeds a **Pepper chat widget** (WhatsApp-style bubbles + status orb) wired to a backend chat endpoint.
 - Provides a **reusable profile assistant card** (`initProfileAssistant`) that can be mounted on any element and pointed at any chat endpoint.
-- Ships with an **admin-only JSON editor** (`site-content-editor.js`) to view, edit, and export an updated `site-content.json` (projects, profile metadata, links, etc.).
-
-The result is a static, host-anywhere portfolio site that can be updated via JSON and augmented with an LLM-based assistant.
+- Includes an **admin JSON editor** to read/modify/export `site-content.json` (projects, profile text, links, etc.).
 
 ---
 
-## Architecture / Flow
-
-### High-level layout
+## Main pieces
 
 - `index.html`
-  - Declares the base structure:
-    - `<aside class="sidebar">` with avatar, name, headline, employer, main nav, and profile links.
-    - `<div class="main-column">` with a topbar and a card-like content area.
-    - Sections: `#summary`, `#chat-section`, `#research-interests`, `#projects`, `#contact`, and an assistant landing zone.
+  - Static skeleton: sidebar, main column, sections (`#summary`, `#chat-section`, `#research-interests`, `#projects`, `#contact`, assistant landing).
   - Includes:
-    - `style.css` (layout + chat styles).
-    - `assets/css/profile-assistant.css` (profile assistant card styles).
-    - `assets/js/site-content-loader.js` (JSON → DOM).
-    - `assets/js/profile-assistant.js` (reusable chat card).
-    - Inline Pepper chat bootstrap script.
+    - `style.css`
+    - `assets/css/profile-assistant.css`
+    - `assets/js/site-content-loader.js`
+    - `assets/js/profile-assistant.js`
+    - Inline script that mounts the Pepper chat widget into `#chatbot-root`.
 
 - `style.css`
-  - Global CSS variables (colors, fonts, radii, shadows).
-  - Flex-based **two-column layout** (`.layout`, `.sidebar`, `.main-column`).
-  - Typography and spacing for sections, projects, footer.
-  - Complete styling for the **Pepper chat widget**:
-    - `.chat-card`, `.chat-header`, `.chat-orb`, `.chat-messages`, `.message-row`, `.message-bubble`, `.chat-input-row`, etc.
-    - Orb states via `.state-idle`, `.state-typing`, `.state-error` and `@keyframes orb-pulse`.
+  - Layout + theming (CSS variables, two-column flex layout, cards).
+  - Full Pepper chat styling:
+    - `.chat-card`, `.chat-header`, `.chat-orb`, `.chat-messages`, `.message-row`, `.message-bubble`, `.chat-input-row`.
+    - Orb states: `.state-idle`, `.state-typing`, `.state-error` with `@keyframes orb-pulse`.
 
 - `assets/css/profile-assistant.css`
-  - Styling for a compact, embeddable chat card:
-    - `.pa-chat-card`, `.pa-chat-header`, `.pa-orb`, `.pa-messages`, `.pa-input-row`, etc.
-  - Separate orb state classes: `.pa-orb--idle`, `.pa-orb--processing`, `.pa-orb--responding`.
-
-### Content loading pipeline
-
-- `data/site-content.json` (not shown here, but assumed structure)
-  - Holds:
-    - `sidebar` metadata: name, avatar, location, employer, `headline_lines`, `degree_lines`, nav links, profiles.
-    - `topbar` name/subtitle.
-    - `sections.summary`, `sections.research_interests`, `sections.projects`, `sections.contact`, `sections.chat`, `sections.assistant_landing`.
-    - `footer` text.
+  - Styles for the compact profile assistant card:
+    - `.pa-chat-card`, `.pa-chat-header`, `.pa-orb`, `.pa-messages`, `.pa-input-row`.
+    - Orb states: `.pa-orb--idle`, `.pa-orb--processing`, `.pa-orb--responding`.
 
 - `assets/js/site-content-loader.js`
-  - On `DOMContentLoaded`, fetches `DATA_URL = "data/site-content.json"` with `cache: "no-cache"`.
-  - Applies content through dedicated functions:
-    - `applySidebar(data)`
-      - Sets avatar image/alt.
-      - Fills name, headline (joined with `<br>`), degree, location, employer.
-      - Builds main nav (`#nav-main`) and profile nav (`#nav-profiles`) from `sidebar.nav`.
-    - `applyTopbar(data)`
-      - Sets topbar name and subtitle.
-    - `applySummary(data)`
-      - Sets `#summary-title` and appends `<p>` elements for each paragraph.
-    - `applyChatSection(data)`
-      - Sets `#chat-title` and `#chat-description` for the chat section intro.
-    - `applyResearch(data)`
-      - Fills `#research-list` with `<li>` entries.
-    - `applyProjects(data)`
-      - Builds `.project` blocks inside `#projects-list`, each with:
-        - `<h3>` containing an `<a>` if `proj.url` exists.
-        - Description paragraph.
-        - `Tech Stack: ...` line.
-    - `applyContact(data)`
-      - Renders paragraphs with email and LinkedIn anchor tags.
-      - Optional calendar / scheduling link.
-    - `applyAssistantLanding(data)`
-      - Sets assistant landing title + description.
-    - `applyFooter(data)`
-      - Sets footer text and current year.
+  - Fetches `data/site-content.json`.
+  - Fills:
+    - Sidebar (`sidebar.name`, avatar, location, employer, nav, profiles).
+    - Topbar (`topbar.name`, `topbar.subtitle`).
+    - Summary, research interests, projects, contact, assistant landing, footer.
 
-The loader keeps the HTML skeleton stable and only populates the placeholders with JSON-driven content.
+- `assets/js/profile-assistant.js`
+  - `initProfileAssistant(config)`:
+    - Mounts a small chat card into a given DOM node.
+    - Manages state (`messages`, ticks, sending flag).
+    - Handles send/receive to `config.endpoint`.
+    - Updates orb state (idle/processing/responding).
+
+- `assets/js/site-content-editor.js`
+  - Admin-only editor for `editor.html`.
+  - Loads `data/site-content.json`.
+  - Renders form controls for:
+    - Profile (name, headline lines, degrees, location, employer, profile links).
+    - Summary paragraphs.
+    - Research interests.
+    - Projects (title, link, description, tech stack).
+    - Contact info (email, LinkedIn, calendar URL).
+  - Can generate an updated JSON and:
+    - Download as `site-content.json`.
+    - Copy JSON to clipboard.
 
 ---
 
-## Project layout
+## Repository layout
 
 ```text
-
 [repo-root]/
   assets/
     css/
-      profile-assistant.css
+      profile-assistant.css      # Compact assistant card styles
     js/
-      profile-assistant.js
-      site-content-editor.js
-      site-content-loader.js
+      profile-assistant.js       # Reusable profile assistant widget
+      site-content-editor.js     # Admin JSON editor logic
+      site-content-loader.js     # JSON → DOM content loader
   data/
-    display_picture.jpg
-    site-content.json
+    display_picture.jpg          # Sidebar avatar
+    site-content.json            # All portfolio content (JSON)
   .gitignore
-  CNAME
-  editor.html
-  index.html
-  Readme.txt
-  style.css
+  CNAME                          # Custom domain config (GitHub Pages)
+  editor.html                    # Admin editor UI for site-content.json
+  index.html                     # Main portfolio + Pepper chat shell
+  Readme.txt                     # Legacy/readme text (optional)
+  style.css                      # Layout + Pepper chat styles
