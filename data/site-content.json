@@ -94,7 +94,7 @@
         },
         {
           "title": "ASTRA-X Overthinker · Persona-Aware Goal Engine",
-          "url": "https://github.com/vaddhiparthy/ASTRA-X-Overthinker",
+          "url": "https://github.com/vaddhiparthy/ASTRA-X-Overthinker-v2",
           "description": "Flask + APScheduler app that iteratively refines Markdown-based goals using an LLM and a rich persona file. It maintains per-goal files, appends timestamped progress, tracks iterations, and builds short, human-readable changelogs and daily digests.",
           "tech_stack": "Python 3, Flask, APScheduler, YAML, Markdown, Ollama, zoneinfo (ET), requests, Jinja2"
         },
