@@ -175,12 +175,6 @@
           "url": "https://github.com/vaddhiparthy/stock-data-analysis-tool",
           "description": "Python toolkit that calls multiple financial data APIs (Seeking Alpha, Financial Modeling Prep, Alpha Vantage), computes growth and valuation metrics (cash flow growth, EPS and revenue growth, market multiples, margins, ROE, PE dynamics), and writes a fully shaped metrics table into Excel/CSV/TXT for further screening and analysis.",
           "tech_stack": "Python, http.client, requests, pandas, certifi, ssl, ExcelWriter, Seeking Alpha API (RapidAPI), Financial Modeling Prep API, Alpha Vantage API"
-        },
-        {
-          "title": "Pepper Portfolio Assistant — LLM-Backed Profile Chat API (Available to use in sidebar of this page)",
-          "url": "https://github.com/vaddhiparthy/Pepper_portfolio",
-          "description": "FastAPI backend that serves Pepper, a locked-down profile assistant for Surya’s portfolio site. It loads curated LinkedIn/GitHub/site text plus a system prompt, builds scoped chat messages, calls the OpenAI Chat Completions API, and exposes a CORS-restricted /api/profile-assistant and /api/chat endpoint that only accepts traffic from surya.vaddhiparthy.com.",
-          "tech_stack": "Python, FastAPI, Uvicorn, CORSMiddleware, Pydantic / pydantic-settings, OpenAI Python SDK, Render (deployment), .env-based configuration"
         }
       ]
     },
