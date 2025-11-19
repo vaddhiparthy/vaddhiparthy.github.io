@@ -71,7 +71,7 @@
       ]
     },
     "research_interests": {
-      "title": "Research Interests",
+      "title": "Data & AI Engineering Skill Set",
       "items": [
         "Scalable Data Pipelines & Streaming - Python, SQL, Kafka, Spark, PySpark, batch and streaming pipelines",
         "Cloud-Native Data Platforms - AWS (S3, Glue, Lambda, ECS/Fargate, Redshift), GCP BigQuery, Snowflake, Databricks, Delta Lake",
