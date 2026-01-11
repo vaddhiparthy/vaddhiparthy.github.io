@@ -6,15 +6,15 @@
     },
     "name": "Sri Surya S. Vaddhiparthy",
     "headline_lines": [
-      "Senior Data & AI Engineer",
-      "LLM Systems, RAG & Recommender Architect"
+      "Senior Data Engineer & Architect",
+      "Snowflake • dbt • Airflow • AWS • Python/SQL"
     ],
     "degree_lines": [
-      "Master of Science (Data Science)",
+      "Master of Science in Data Science",
       "Western Michigan University"
     ],
-    "location": "United States of America",
-    "employer": "Comerica Bank (via Collaborate Solutions)",
+    "location": "United States",
+    "employer": "Comerica Bank (via Collaborate)",
     "nav": {
       "main": [
         {
@@ -23,7 +23,7 @@
         },
         {
           "href": "#research-interests",
-          "label": "Research Interests"
+          "label": "Skill Set"
         },
         {
           "href": "#projects",
@@ -58,130 +58,60 @@
   },
   "topbar": {
     "name": "Sri Surya S. Vaddhiparthy",
-    "subtitle": "Data & AI Engineer"
+    "subtitle": "Senior Data Engineer & Architect"
   },
   "sections": {
     "summary": {
       "title": "Professional Summary",
       "paragraphs": [
-        "I’m a Senior Data & AI Engineer specializing in scalable data architecture and LLM infrastructure. My work spans distributed compute (Spark, ECS/Fargate), cloud data platforms (AWS, Snowflake), and agentic AI pipelines built with LangGraph, LangChain, Milvus/pgvector, RAGAS, and reranker-driven retrieval.",
-        "I design and deploy multi-cloud ELT/ETL systems with event-driven ingestion, metadata-rich lakehouse layers, semantic indexing, and dbt-validated transformations. My retrieval work includes hybrid search (BM25 + dense embeddings), vector-store optimization, and latency-aware context selection for real-world RAG deployments.",
-        "On the production side, I focus on containerized orchestration, Terraform-driven IaC, CI/CD automation, cost-efficient Snowflake optimization, and observability tooling (Langfuse, CloudWatch). My systems support high-throughput analytics, feature reuse, and reliable LLM inference at enterprise scale.",
-        "My core principle: architect data and AI systems that are fast, reproducible, fault-tolerant, and ready for real deployment."
+        "Senior Data Engineer (7+ years) specializing in the architecture of production-grade data platforms and ELT/ETL frameworks. I transform fragmented source data into governed, analytics-ready assets with a focus on performance, cost-efficiency, and high data trust.",
+		"• Architecture & Performance: Delivered a Snowflake subject area using dimensional modeling and 200+ dbt models (tests/macros/docs), driving ~3× query performance and ~42% faster analyst time-to-insight.",
+		"• Pipeline Engineering: Built and tuned ingestion + transformation in Python/SQL/dbt with Airflow orchestration (reusable connectors, incremental patterns), cutting batch latency ~45% while keeping pipelines maintainable and auditable.",
+		"• Reliability & FinOps: Operationalized data observability using Great Expectations and Monte Carlo, maintaining 99.9% availability. Reduced incident MTTR by ~35% and slashed compute costs by ~20% through proactive warehouse tuning and SQL optimization.",
+		"• AI for Analytics: Leveraged prompt design and LLM orchestration to streamline internal analytics workflows, implementing robust evaluation frameworks and guardrails to ensure output reliability."
       ]
     },
     "research_interests": {
-      "title": "Data & AI Engineering Skill Set",
+      "title": "Data Engineering Skill Set",
       "items": [
-        "Scalable Data Pipelines & Streaming - Python, SQL, Kafka, Spark, PySpark, batch and streaming pipelines",
-        "Cloud-Native Data Platforms - AWS (S3, Glue, Lambda, ECS/Fargate, Redshift), GCP BigQuery, Snowflake, Databricks, Delta Lake",
-        "Data Modeling for Analytics & AI - Star schema, snowflake schema, dimensional modeling, Data Vault, semantic layers, metadata modeling",
-        "Retrieval-Augmented LLM Systems - LangGraph, LangChain, RAG, vector databases (Milvus, pgvector, FAISS), rerankers (bge-reranker, Cohere Rerank), prompt engineering, LLM evaluation",
-        "Pipeline Orchestration & Reproducibility - Airflow, dbt, Prefect, incremental loads, snapshots, data contracts",
-        "Data Quality & Observability - Great Expectations, Monte Carlo, data SLAs, lineage, monitoring and tracing, incident runbooks",
-        "Analytics Semantics & Decision Support - Looker (LookML, Explores), Tableau, Power BI, KPI design and governance",
-        "MLOps / LLMOps & Infra Automation - Docker, Kubernetes, Terraform, Jenkins, Git, CI/CD automation"
+        "Core Data Engineering: Python, SQL; ELT/ETL pipelines, reusable ingestion patterns, incremental loads, backfills, auditability.",
+        "Modeling & Analytics: Dimensional modeling (Star/Snowflake schema), curated marts, governed metrics, semantic layers.",
+        "Orchestration & Transformation: Airflow, dbt (models/macros/tests/docs), DAG scheduling, dependency management, reliability patterns.",
+        "Streaming & Distributed Compute: Kafka, Spark, PySpark (Batch + Streaming fundamentals).",
+        "Cloud & Warehousing: Snowflake; AWS (S3, Glue, Lambda, ECS/Fargate, Redshift); BigQuery; Databricks/Delta Lake.",
+        "Quality & Observability: Great Expectations, Monte Carlo; SLAs, lineage, monitoring, incident runbooks.",
+        "BI & Semantics: Looker (LookML/Explores), Power BI, Tableau; KPI design and governance.",
+        "Dev & Automation: Git, CI/CD, Docker, Terraform; testing, code review, repeatable deployments.",
+		"AI Engineering: Prompt design, RAG fundamentals (LangChain/LangGraph), Vector Databases (pgvector/Milvus), LLM evaluation."
       ]
     },
     "projects": {
-      "title": "Research & Development Projects",
+      "title": "Selected R&D & Engineering Projects",
       "items": [
         {
-          "title": "VideoSemanticAlignment: Vision–Language Fine-Tuning Pipeline",
+          "title": "VideoSemanticAlignment: Multimodal Fine-Tuning Pipeline & Research- Manuscript in Peer Review (Peer Review)",
           "url": "",
-          "description": "Constructs a preprocessing and training workflow that cleans event-level textual descriptions, aligns them with corresponding video segments, and fine-tunes a vision–language model to associate visual content with narrative text, enabling supervised video-to-text semantic mapping for downstream inference. Fine-tuning and evaluations are nearly complete, and the team is preparing the peer-review manuscript for near-term publication.",
-          "tech_stack": "Python, Vision–Language Models, Dataset Processing, LLM Fine-Tuning"
+          "description": "Lead Data Architect for a vision-language research project. Engineered a high-throughput preprocessing workflow that cleans event-level text and aligns it to specific video temporal segments. Built the underlying data infrastructure to generate high-fidelity supervised pairs for multimodal fine-tuning, directly enabling state-of-the-art narrative-to-visual mapping.",      
+		  "tech_stack": "Python, Vision–Language Models (VLM), PyTorch, Temporal Data Alignment, Dataset Distillation."
         },
-        {
-          "title": "ASTRA-X Overthinker · Persona-Aware Goal Engine",
-          "url": "https://github.com/vaddhiparthy/ASTRA-X-Overthinker-v2",
-          "description": "Flask + APScheduler app that iteratively refines Markdown-based goals using an LLM and a rich persona file. It maintains per-goal files, appends timestamped progress, tracks iterations, and builds short, human-readable changelogs and daily digests.",
-          "tech_stack": "Python 3, Flask, APScheduler, YAML, Markdown, Ollama, zoneinfo (ET), requests, Jinja2"
-        },
-        {
-          "title": "Synthetic Credit Score Estimator (GAN + Regression)",
-          "url": "https://github.com/vaddhiparthy/SynthScoreNet",
-          "description": "Built a TensorFlow GAN to generate synthetic credit-feature rows from limited real data and trained a regression model on the synthetic set to predict a custom creditworthiness score for users with thin or no credit history (using features like income, purchase price, demographics, and phone-number age).",
-          "tech_stack": "Python, NumPy, Pandas, TensorFlow / Keras (GAN), scikit-learn (LinearRegression)."
-        },
-        {
-          "title": "GPT-2 Fine-Tuning Pipeline (Hugging Face Transformers)",
-          "url": "https://github.com/vaddhiparthy/GPT-2-Fine-Tuning",
-          "description": "End-to-end Python pipeline that installs dependencies, builds a tokenized text dataset, fine-tunes GPT-2 on a custom corpus using Trainer, evaluates perplexity on a test split, and visualizes training loss over time.",
-          "tech_stack": "Python, PyTorch, Hugging Face Transformers, Datasets, Matplotlib."
-        },
-        {
-          "title": "Topic-Aware Sentiment Analysis for App Reviews",
-          "url": "https://github.com/vaddhiparthy/Topic-Aware-Sentiment-Analysis",
-          "description": "Python pipeline that ingests mobile app reviews from an API, cleans text, performs VADER sentiment analysis, tags reviews by UX topics (interface, load time, etc.), and generates per-topic word clouds plus positive vs. negative sentiment distributions for product teams.",
-          "tech_stack": "Python, Requests, Pandas, NLTK, VADER, Matplotlib, WordCloud, Seaborn."
-        },
-        {
-          "title": "Image Classification with Pre-Trained ResNet18",
-          "url": "https://github.com/vaddhiparthy/ImageClassfication-ResNet18",
-          "description": "PyTorch script that loads a pre-trained ResNet-18 model, runs it on a local image, and prints the top-k ImageNet class predictions.",
-          "tech_stack": "Python, PyTorch, Torchvision"
-        },
-        {
-          "title": "Login Events ETL (SQS → Postgres with Hash Masking)",
+		{
+          "title": "Secure PII Event Ingestion Framework (SQS → Postgres)",
           "url": "https://github.com/vaddhiparthy/Login-Events-ETL",
-          "description": "Python ETL that consumes login events from an AWS SQS queue (via LocalStack), pseudonymizes sensitive fields with SHA-256 hashing, and loads them into a Postgres `user_logins` table.",
+          "description": "Built a decoupled pipeline using AWS SQS (via LocalStack) and Python. Implemented SHA-256 pseudonymization for PII fields during the ingestion flight.",
           "tech_stack": "Python, boto3, psycopg2, PostgreSQL, Docker"
         },
         {
-          "title": "Urban Geospatial Analytics with Foursquare & Open City Data",
-          "url": "https://github.com/vaddhiparthy/Location-Selection-using-K-means-clustering",
-          "description": "This project contains a set of Jupyter notebooks that use geospatial data, the Foursquare Places API, and open city datasets to analyze how venues and infrastructure are distributed across NYC and Toronto neighborhoods.",
-          "tech_stack": "Python, Jupyter Notebooks, pandas, NumPy, Foursquare Places API, BeautifulSoup, scikit-learn, Folium, geopy, Matplotlib"
+          "title": "LLM Integration Gateway & Context Orchestrator (Deployed on Current Page)",
+          "url": "",
+          "description": "Engineered a containerized FastAPI backend to bridge public frontend interfaces with OpenAI’s orchestration layer. Designed a decoupled architecture to secure API credentials and implement custom context-injection, ensuring responses are grounded in curated datasets while enforcing strict Pydantic schema validation and CORS security.",
+          "tech_stack": "Python, FastAPI, Uvicorn, Pydantic, OpenAI SDK, Render, Docker."
         },
         {
-          "title": "Forest Fire Burned Area Prediction (Montesinho, Portugal)",
-          "url": "https://github.com/vaddhiparthy/Forest-Fire-Estimation",
-          "description": "Regression analysis of Portuguese forest fires in Montesinho park, using meteorological variables and Fire Weather Index (FWI) components to predict log-scaled burned area, with skewness/outlier handling and linear vs polynomial regression models.",
-          "tech_stack": "pandas, NumPy, matplotlib, seaborn, SciPy (zscore), scikit-learn (LinearRegression, PolynomialFeatures, train_test_split)"
-        },
-        {
-          "title": "GeoSpatial Climate Analytics: Forest Fires & Global GHG Emissions",
-          "url": "https://github.com/vaddhiparthy/GeoSpatial-Climate-Analytics",
-          "description": "Collection of geospatial climate analytics mini-projects, including forest-fire burned-area prediction in Portugal and international greenhouse gas emission analysis with R, Python and Shiny.",
-          "tech_stack": "dplyr, ggplot2, shiny, rmarkdown, knitr"
-        },
-        {
-          "title": "Blog Sentiment & Subjectivity Analysis by Age Group",
-          "url": "https://github.com/vaddhiparthy/Blog-Sentiment-Subjectivity-Analysis",
-          "description": "Python-based text analytics pipeline on the blogtext.csv corpus (50,000 posts). The code cleans raw blog text, assigns bloggers to age groups, computes TextBlob polarity and subjectivity scores, and visualizes sentiment distributions, age/gender effects, and topic-specific word clouds.",
-          "tech_stack": "Python, pandas, numpy, matplotlib, seaborn, NLTK, TextBlob, WordCloud, regex"
-        },
-        {
-          "title": "Insurance Management System – Telematics Claim Prediction",
-          "url": "https://github.com/vaddhiparthy/Insurance-Management-System",
-          "description": "Machine-learning pipeline that uses synthetic driver telematics and policy attributes to predict whether a policy will generate an insurance claim. The system tackles extreme class imbalance, compares multiple classification algorithms, and exports UI-ready predictions to drive a front-end Insurance Management System.",
-          "tech_stack": "Python, pandas, NumPy, scikit-learn, XGBoost, imbalanced-learn (SMOTE, SMOTE-Tomek), matplotlib, seaborn, Jupyter"
-        },
-        {
-          "title": "Alternative Data Credit Default Risk Model (XGBoost + SMOTE)",
-          "url": "https://github.com/vaddhiparthy/Alternative-Data-Credit-Default-Risk-Model",
-          "description": "End-to-end ML pipeline predicting credit default risk for borrowers with limited history using the Home Credit dataset. The project covers data cleaning, feature selection, SMOTE handling of severe class imbalance, model benchmarking, and deployment of an XGBoost classifier with ~95% accuracy and robust precision/recall for defaulters.",
-          "tech_stack": "Python, NumPy, pandas, Matplotlib, Seaborn, scikit-learn, imbalanced-learn (SMOTE), XGBoost, Jupyter Notebook"
-        },
-        {
-          "title": "COVID Trend Analysis — Time-Series Forecasting",
-          "url": "https://github.com/vaddhiparthy/COVID-Trend-Analysis",
-          "description": "Analyzes U.S. COVID-19 metrics and fits ARIMA-based models for trend projection and dashboard-ready time-series outputs.",
-          "tech_stack": "Python, Jupyter, pandas, NumPy, statsmodels, pmdarima, scikit-learn, matplotlib, seaborn, folium"
-        },
-        {
-          "title": "Stock Data Analysis Tool — Multi-API Equity Metrics Pipeline",
-          "url": "https://github.com/vaddhiparthy/stock-data-analysis-tool",
-          "description": "Python toolkit that calls multiple financial data APIs (Seeking Alpha, Financial Modeling Prep, Alpha Vantage), computes growth and valuation metrics (cash flow growth, EPS and revenue growth, market multiples, margins, ROE, PE dynamics), and writes a fully shaped metrics table into Excel/CSV/TXT for further screening and analysis.",
-          "tech_stack": "Python, http.client, requests, pandas, certifi, ssl, ExcelWriter, Seeking Alpha API (RapidAPI), Financial Modeling Prep API, Alpha Vantage API"
-        },
-        {
-          "title": "Pepper Portfolio Assistant — LLM-Backed Profile Chat API (Available to use in sidebar of this page)",
-          "url": "https://github.com/vaddhiparthy/Pepper_portfolio",
-          "description": "FastAPI backend that serves Pepper, a locked-down profile assistant for Surya’s portfolio site. It loads curated LinkedIn/GitHub/site text plus a system prompt, builds scoped chat messages, calls the OpenAI Chat Completions API, and exposes a CORS-restricted /api/profile-assistant and /api/chat endpoint that only accepts traffic from surya.vaddhiparthy.com.",
-          "tech_stack": "Python, FastAPI, Uvicorn, CORSMiddleware, Pydantic / pydantic-settings, OpenAI Python SDK, Render (deployment), .env-based configuration"
-        }
+          "title": "ASTRA-X Overthinker: Agentic Workflow Orchestrator",
+          "url": "https://github.com/vaddhiparthy/ASTRA-X-Overthinker-v2",
+          "description": "Created a workflow engine that automates scheduled iterations and persists goal states. It generates timestamped progress logs and human-readable changelogs for reproducibility.",      
+		  "tech_stack": "Python, Flask, APScheduler, YAML, Ollama."
+        }		        
       ]
     },
     "contact": {
