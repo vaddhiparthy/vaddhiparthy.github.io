@@ -7,7 +7,7 @@
     "name": "Sri Surya S. Vaddhiparthy",
     "headline_lines": [
       "Senior Data Engineer",
-      "Snowflake • dbt • Airflow • AWS • Python/SQL"
+      "• ETL/ELT • Python • SQL • Airflow • AWS • Snowflake • Kafka • dbt"
     ],
     "degree_lines": [
       "Master of Science in Data Science",
@@ -64,11 +64,10 @@
     "summary": {
       "title": "Professional Summary",
       "paragraphs": [
-        "Senior Data Engineer (7+ years experience) specializing in the architecture of production-grade data platforms and ELT/ETL frameworks. I transform fragmented source data into governed, analytics-ready assets with a focus on performance, cost-efficiency, and high data trust.",
-		"Architecture & Performance: Delivered a Snowflake subject area using dimensional modeling and 200+ dbt models (tests/macros/docs), driving ~3× query performance and ~42% faster analyst time-to-insight.",
-		"Pipeline Engineering: Built and tuned ingestion + transformation in Python/SQL/dbt with Airflow orchestration (reusable connectors, incremental patterns), cutting batch latency ~45% while keeping pipelines maintainable and auditable.",
-		"Reliability & FinOps: Operationalized data observability using Great Expectations, maintaining 99.9% availability. Reduced incident MTTR by ~35% and slashed compute costs by ~20% through proactive warehouse tuning and SQL optimization.",
-		"Production LLM Systems (RAG + Guardrails): Built and operated scoped LLM services for internal workflows (strict context boundaries, schema validation, evaluation/monitoring) to improve throughput without sacrificing reliability."
+        "I am a Senior Data Engineer with eight years of experience designing, building, and operating large-scale data platforms that power analytics and decision-making. My work focuses on turning complex, multi-source data into reliable, governed systems that teams can trust, with measurable improvements in performance, quality, and cost.",
+		"I specialize in end-to-end data engineering across batch and streaming systems, with deep experience in Python, SQL, Airflow, AWS, Snowflake, dbt, Kafka, and Spark. I have led initiatives that improved time-to-insight by approximately 42 percent, increased query performance by nearly three times, reduced data incident resolution time by 35 percent, and lowered warehouse compute costs by around 20 percent through disciplined FinOps and optimization practices.",
+		"My approach emphasizes strong engineering fundamentals: automated testing and validation, monitoring and observability, CI/CD and infrastructure-as-code, and reusable pipeline patterns that make data platforms easier to scale and maintain. I work closely with analytics and business stakeholders to establish clear data models, consistent KPI definitions, and semantic layers that prevent metric drift and accelerate confident decision-making.",
+		"I am driven by building data systems that are not only fast and scalable, but also dependable, cost-efficient, and easy for organizations to grow on."	
       ]
     },
     "research_interests": {
