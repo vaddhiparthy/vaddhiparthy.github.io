@@ -65,10 +65,10 @@
       "title": "Professional Summary",
       "paragraphs": [
         "Senior Data Engineer (7+ years experience) specializing in the architecture of production-grade data platforms and ELT/ETL frameworks. I transform fragmented source data into governed, analytics-ready assets with a focus on performance, cost-efficiency, and high data trust.",
-		"• Architecture & Performance: Delivered a Snowflake subject area using dimensional modeling and 200+ dbt models (tests/macros/docs), driving ~3× query performance and ~42% faster analyst time-to-insight.",
-		"• Pipeline Engineering: Built and tuned ingestion + transformation in Python/SQL/dbt with Airflow orchestration (reusable connectors, incremental patterns), cutting batch latency ~45% while keeping pipelines maintainable and auditable.",
-		"• Reliability & FinOps: Operationalized data observability using Great Expectations, maintaining 99.9% availability. Reduced incident MTTR by ~35% and slashed compute costs by ~20% through proactive warehouse tuning and SQL optimization.",
-		"• Production LLM Systems (RAG + Guardrails): Built and operated scoped LLM services for internal workflows (strict context boundaries, schema validation, evaluation/monitoring) to improve throughput without sacrificing reliability."
+		"Architecture & Performance: Delivered a Snowflake subject area using dimensional modeling and 200+ dbt models (tests/macros/docs), driving ~3× query performance and ~42% faster analyst time-to-insight.",
+		"Pipeline Engineering: Built and tuned ingestion + transformation in Python/SQL/dbt with Airflow orchestration (reusable connectors, incremental patterns), cutting batch latency ~45% while keeping pipelines maintainable and auditable.",
+		"Reliability & FinOps: Operationalized data observability using Great Expectations, maintaining 99.9% availability. Reduced incident MTTR by ~35% and slashed compute costs by ~20% through proactive warehouse tuning and SQL optimization.",
+		"Production LLM Systems (RAG + Guardrails): Built and operated scoped LLM services for internal workflows (strict context boundaries, schema validation, evaluation/monitoring) to improve throughput without sacrificing reliability."
       ]
     },
     "research_interests": {
