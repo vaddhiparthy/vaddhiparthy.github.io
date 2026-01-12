@@ -6,7 +6,7 @@
     },
     "name": "Sri Surya S. Vaddhiparthy",
     "headline_lines": [
-      "Senior Data Engineer & Architect",
+      "Senior Data Engineer",
       "Snowflake • dbt • Airflow • AWS • Python/SQL"
     ],
     "degree_lines": [
@@ -58,17 +58,17 @@
   },
   "topbar": {
     "name": "Sri Surya S. Vaddhiparthy",
-    "subtitle": "Senior Data Engineer & Architect"
+    "subtitle": "Senior Data Engineer"
   },
   "sections": {
     "summary": {
       "title": "Professional Summary",
       "paragraphs": [
-        "Senior Data Engineer (7+ years) specializing in the architecture of production-grade data platforms and ELT/ETL frameworks. I transform fragmented source data into governed, analytics-ready assets with a focus on performance, cost-efficiency, and high data trust.",
+        "Senior Data Engineer (7+ years experience) specializing in the architecture of production-grade data platforms and ELT/ETL frameworks. I transform fragmented source data into governed, analytics-ready assets with a focus on performance, cost-efficiency, and high data trust.",
 		"• Architecture & Performance: Delivered a Snowflake subject area using dimensional modeling and 200+ dbt models (tests/macros/docs), driving ~3× query performance and ~42% faster analyst time-to-insight.",
 		"• Pipeline Engineering: Built and tuned ingestion + transformation in Python/SQL/dbt with Airflow orchestration (reusable connectors, incremental patterns), cutting batch latency ~45% while keeping pipelines maintainable and auditable.",
-		"• Reliability & FinOps: Operationalized data observability using Great Expectations and Monte Carlo, maintaining 99.9% availability. Reduced incident MTTR by ~35% and slashed compute costs by ~20% through proactive warehouse tuning and SQL optimization.",
-		"• AI for Analytics: Leveraged prompt design and LLM orchestration to streamline internal analytics workflows, implementing robust evaluation frameworks and guardrails to ensure output reliability."
+		"• Reliability & FinOps: Operationalized data observability using Great Expectations, maintaining 99.9% availability. Reduced incident MTTR by ~35% and slashed compute costs by ~20% through proactive warehouse tuning and SQL optimization.",
+		"• Production LLM Systems (RAG + Guardrails): Built and operated scoped LLM services for internal workflows (strict context boundaries, schema validation, evaluation/monitoring) to improve throughput without sacrificing reliability."
       ]
     },
     "research_interests": {
@@ -78,9 +78,9 @@
         "Modeling & Analytics: Dimensional modeling (Star/Snowflake schema), curated marts, governed metrics, semantic layers.",
         "Orchestration & Transformation: Airflow, dbt (models/macros/tests/docs), DAG scheduling, dependency management, reliability patterns.",
         "Streaming & Distributed Compute: Kafka, Spark, PySpark (Batch + Streaming fundamentals).",
-        "Cloud & Warehousing: Snowflake; AWS (S3, Glue, Lambda, ECS/Fargate, Redshift); BigQuery; Databricks/Delta Lake.",
+        "Cloud & Warehousing: Snowflake; AWS (S3, Glue, Lambda, ECS/Fargate, Redshift); Databricks/Delta Lake.",
         "Quality & Observability: Great Expectations, Monte Carlo; SLAs, lineage, monitoring, incident runbooks.",
-        "BI & Semantics: Looker (LookML/Explores), Power BI, Tableau; KPI design and governance.",
+        "BI & Semantics: Power BI, Tableau; KPI design and governance.",
         "Dev & Automation: Git, CI/CD, Docker, Terraform; testing, code review, repeatable deployments.",
 		"AI Engineering: Prompt design, RAG fundamentals (LangChain/LangGraph), Vector Databases (pgvector/Milvus), LLM evaluation."
       ]
@@ -89,17 +89,11 @@
       "title": "Selected R&D & Engineering Projects",
       "items": [
         {
-          "title": "VideoSemanticAlignment: Multimodal Fine-Tuning Pipeline & Research- Manuscript in Peer Review (Peer Review)",
-          "url": "",
-          "description": "Lead Data Architect for a vision-language research project. Engineered a high-throughput preprocessing workflow that cleans event-level text and aligns it to specific video temporal segments. Built the underlying data infrastructure to generate high-fidelity supervised pairs for multimodal fine-tuning, directly enabling state-of-the-art narrative-to-visual mapping.",      
-		  "tech_stack": "Python, Vision–Language Models (VLM), PyTorch, Temporal Data Alignment, Dataset Distillation."
-        },
-		{
           "title": "Secure PII Event Ingestion Framework (SQS → Postgres)",
           "url": "https://github.com/vaddhiparthy/Login-Events-ETL",
           "description": "Built a decoupled pipeline using AWS SQS (via LocalStack) and Python. Implemented SHA-256 pseudonymization for PII fields during the ingestion flight.",
           "tech_stack": "Python, boto3, psycopg2, PostgreSQL, Docker"
-        },
+        },				
         {
           "title": "LLM Integration Gateway & Context Orchestrator (Deployed on Current Page)",
           "url": "",
@@ -111,7 +105,13 @@
           "url": "https://github.com/vaddhiparthy/ASTRA-X-Overthinker-v2",
           "description": "Created a workflow engine that automates scheduled iterations and persists goal states. It generates timestamped progress logs and human-readable changelogs for reproducibility.",      
 		  "tech_stack": "Python, Flask, APScheduler, YAML, Ollama."
-        }		        
+        },
+		{
+          "title": "VideoSemanticAlignment: Multimodal Fine-Tuning Pipeline & Research - Manuscript draft in progress.",
+          "url": "",
+          "description": "Data Architect for a vision-language research project. Engineered a high-throughput preprocessing workflow that cleans event-level text and aligns it to specific video temporal segments. Built the underlying data infrastructure to generate high-fidelity supervised pairs for multimodal fine-tuning, directly enabling state-of-the-art narrative-to-visual mapping.",      
+		  "tech_stack": "Python, Vision–Language Models (VLM), PyTorch, Temporal Data Alignment, Dataset Distillation."
+        }		
       ]
     },
     "contact": {
